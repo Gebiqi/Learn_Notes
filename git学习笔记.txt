@@ -1,0 +1,118 @@
+git 源代码管理工具
+Linux之父维护Linux版本
+开源
+分32位或64位
+官网下载，默认安装即可
+
+在项目文件中使用GIt基本步骤
+1 项目文件夹根目录下，右键打开git bash here
+2 命令git init 初始化创建git仓储 生成隐藏.git目录,用于存放git对项目进行备份
+3 使用命令配置用户名和邮箱
+	git config --global user.name " "
+	git config --global user.email " "
+
+	开始git备份文件
+4 git add ./xxxxx		把代码从工作区放到暂存区
+5 git commit -m "存储说明"	把代码从暂存区放到版本库
+  如果忘记-m 会进入编辑界面，退出按esc :q!
+
+6 查看修改的文件状态 git status
+	红色：修改了但未存放到暂存区
+	绿色：修改并提交到了暂存区
+	nothing：已修改并提交到版本库
+	如果文件修改后，又改回原来的内容，则git视为没有做过修改
+7 批量放所有修改的文件到暂存区	git add ./
+8 直接从工作区放到版本库	git commit --all -m " "
+
+
+查看日志
+9 git log   /   git log --oneline
+
+10
+版本回退	git reset --hard Head~0 回退到版本库的最新版本 ~1 上上个版本 以此类推
+		
+11使用版本号回退版本	git reset --hard xxxxxxxxx
+版本切换：虽然git log只显示之前版本，但还是可以切换到更新的版本号的
+可通过 git reflog看到整个版本切换记录履历
+
+
+12 创建分支	(master主分支)
+	git branch xxx(分支名字)
+   查看分支
+	git branch 绿色 带星号的分支为当前所在分支
+   切换分支
+	git checkout 分支名字
+   合并分支
+	git checkout master
+	git merge xxx	把分支合并进主分支
+   删除分支
+	git branch -d xxx(分支名字) 需要在其他分支下删除
+
+13 分支合并时出现冲突时手动处理
+	合并分支是会显示冲突 Conflict in xxx文件
+	这时候需要查看文件手动处理
+	处理完成后需要再进行一次提交
+
+14 团队共享项目代码 GitHub 
+GitHub不是Git 	只是一个网站 当作代码服务器的作用 两者是完全不一样的概念
+这个网站允许别人通过git上传代码的功能
+以下是GitHub的使用方式：
+	创建账号登陆
+	创建目录
+	选择https下的git仓储路径
+	git push github仓储路径 master	把当前分支提交到远程github存储下的master分支
+	 第一次上传会提示输入用户名密码
+	
+15 下拉共享资源代码
+	两种方式：pull  clone
+	pull日常开发中使用较多  第一次使用会提示输入用户名密码  
+	创建项目空目录
+	右键 git bash 打开命令行窗口
+	运行git init 初始化
+	git pull github仓储路径 master
+
+	clone是初次创建项目目录时调用 比较暴力 重复使用会覆盖原先代码
+	创建项目空目录
+	右键 git bash 打开命令行窗口
+	git clone github仓储路径
+	
+
+16 为安全 使用SSH方式上传代码
+	github可以使用https方式和ssh方式两种选择
+公钥与私钥 （成对的）
+	公钥交给github网站留存
+	私钥自己留存
+生成方式：
+ssh -kengen -t rsa -C "邮箱"
+	提示输入保存地址，按括号内提示格式输入即可，（目录路径+保存的秘钥文件名）
+	测试下来，最好用默认给的路径，如果更换了自己的路径，会出现无法认证公钥的问题！！！
+会在指定目录下生成一对公钥和私钥
+
+将公钥用文本方式打开，将里面的内容复制保存到gitHub的SSH and GPG keys中
+
+这样在上传时，只要把github的存储路径从https模式的换为ssh模式的即可，这样初次对存储路径进行代码上传也不需要输入用户名密码了
+
+
+
+
+17 模拟两个用户同时共享服务器代码时的操作，push与pull的综合使用同前面的操作
+
+18 当服务器版本和本地版本不一样时，如果进行了编辑后需要同步服务器时，应该先pull，再push
+	因为产生了版本冲突，在服务器上体现了但无法修正
+	只能先在本地解决冲突，再提交服务器一个没有代码冲突的版本
+	先pull后，会先自动合并生成一个版本，这个版本是服务器最新版本和本地修改后代码生成的版本，如果没有代码冲突则本地提交的步骤可以免掉了
+	
+
+19 命令行语句简化
+	远程存储地址简化方式：
+	保存到一个变量别名中 
+	git remote add origin XXXXXXXXXXXXXXXXXXXX	
+	使用时
+	git push origin master
+
+	进一步简化
+	第一次push时与服务器建立关联  git push xxx -u master
+	以后使用时
+	git push 即可
+
+	PS:在执行关联-u命令前，最好先做一次同步 从服务器上pull一次数据，再进行push -u操作
