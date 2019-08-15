@@ -1,0 +1,53 @@
+一、什么是Node.js
+1 Node.js官网 https://nodejs.org
+2 JavaScript的运行时runtime
+3 基于Chrome的V8引擎
+4 特性之一：event-driven事件驱动
+5 特性之二：non-blocking非阻塞
+6 NPM：Node.js Packages Manager 包管理器
+7 NPM官网：https//npmjs.com
+8 Node.js跟传统后端语言作用相同：服务器端，数据整合后传给前端
+
+二、Node.js和JavaScript是什么关系？
+9 JavaScript是脚本语言，运行于客户端浏览器，浏览器对JS进行解释执行，每个浏览器都有一个组成部分：JavaScript引擎。
+10 Node.js运行于服务器端，JavaScript运行于客户端
+11 语法上 Node.js和JavaScript基本一致 但功能Node.js要远远大于JavaScript
+	Javascript：DOM/BOM	Node.js 则没有
+三、安装Node.js
+12 推荐使用WEBStorm IDE工具进行编辑Node.js程序    
+13 推荐安装LTS长期支持版  不推荐最新版 Current
+14 同时会安装	Node.js runtime 
+		NPM
+		同时配置了NODE和NPM为系统环境变量
+		在线文档快捷方式
+	安装路径
+	15测试：win+R
+		node -v
+		npm -v
+	运行Node.js
+	16命令行里测试：node
+			var x=1;
+			var y=2;
+			x+y
+	17node.js程序的执行有两种方式：1交互模式；2脚本模式
+
+18配置WebStrom的Node.js程序环境
+File-Settings-Languages&FrameWorks   
+JavaScript-JavaScript Language Version > EcmaScript 6
+Node.js and NPM
+File-Settings-搜索font
+19运行脚本run的快捷键Shift+F10
+
+
+
+Node.js模块分类
+1 核心模块（其中包含全局模块Globals，全局模块不需要引用可以直接使用其中的所有全局对象，可参考Nodejs官网的API DOC），需要引用使用
+2 第三方模块 需要下载安装并引用后才能使用，
+安装可以作为项目依赖安装，也可以作为项目开发依赖安装
+3 http核心模块Demo实例	1引用 2创建server实例并给出请求响应函数 3 监听端口
+
+
+补充知识点：live template配置
+jetbrain IDE中许多都有live template配置：以webstorm为例
+file-settings-搜索live template 在右边选择JavaScript，点击添加live template 
+以consolo.log()；命令举例：输入cl   输入描述  输入生成的语句 console.log($END$); 选择适用于的语言，然后点应用
