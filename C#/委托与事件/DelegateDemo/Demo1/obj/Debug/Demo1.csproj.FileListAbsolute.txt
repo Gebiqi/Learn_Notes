@@ -1,0 +1,11 @@
+E:\study\c#\20190819\DelegateDemo\Demo1\bin\Debug\Demo1.exe.config
+E:\study\c#\20190819\DelegateDemo\Demo1\bin\Debug\Demo1.exe
+E:\study\c#\20190819\DelegateDemo\Demo1\bin\Debug\Demo1.pdb
+E:\study\c#\20190819\DelegateDemo\Demo1\obj\Debug\Demo1.csprojAssemblyReference.cache
+E:\study\c#\20190819\DelegateDemo\Demo1\obj\Debug\Demo1.FrmMain.resources
+E:\study\c#\20190819\DelegateDemo\Demo1\obj\Debug\Demo1.FrmSub.resources
+E:\study\c#\20190819\DelegateDemo\Demo1\obj\Debug\Demo1.Properties.Resources.resources
+E:\study\c#\20190819\DelegateDemo\Demo1\obj\Debug\Demo1.csproj.GenerateResource.cache
+E:\study\c#\20190819\DelegateDemo\Demo1\obj\Debug\Demo1.csproj.CoreCompileInputs.cache
+E:\study\c#\20190819\DelegateDemo\Demo1\obj\Debug\Demo1.exe
+E:\study\c#\20190819\DelegateDemo\Demo1\obj\Debug\Demo1.pdb

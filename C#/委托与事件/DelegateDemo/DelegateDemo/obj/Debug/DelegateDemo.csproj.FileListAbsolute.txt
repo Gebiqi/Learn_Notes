@@ -1,0 +1,7 @@
+E:\study\c#\20190819\DelegateDemo\DelegateDemo\bin\Debug\DelegateDemo.exe.config
+E:\study\c#\20190819\DelegateDemo\DelegateDemo\bin\Debug\DelegateDemo.exe
+E:\study\c#\20190819\DelegateDemo\DelegateDemo\bin\Debug\DelegateDemo.pdb
+E:\study\c#\20190819\DelegateDemo\DelegateDemo\obj\Debug\DelegateDemo.csprojAssemblyReference.cache
+E:\study\c#\20190819\DelegateDemo\DelegateDemo\obj\Debug\DelegateDemo.csproj.CoreCompileInputs.cache
+E:\study\c#\20190819\DelegateDemo\DelegateDemo\obj\Debug\DelegateDemo.exe
+E:\study\c#\20190819\DelegateDemo\DelegateDemo\obj\Debug\DelegateDemo.pdb

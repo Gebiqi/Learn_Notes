@@ -1,0 +1,164 @@
+一委托使用步骤
+1 声明委托（定义一个方法的原型：返回值、参数个数和类型）	
+2 根据委托定义方法
+3 创建委托对象
+4 通过使用委托调用方法
+5 通过动态更改委托指针指向的方法，进行方法切换
+
+具体DEMO：
+namespace DelegateDemo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //3创建委托对象
+            CalculatorDelegate objCal = new CalculatorDelegate(Add);
+            //4通过使用委托调用方法
+            Console.WriteLine("a+b="+objCal(30,20));
+            //5通过动态更改委托指针指向的方法，进行方法切换
+            objCal = Sub;
+            //objCal -= Add;
+            //objCal += Sub;
+            Console.WriteLine("a-b="+objCal(30,20));
+            Console.ReadLine();
+        }
+
+        //2根据委托原型创建方法
+        static int Add(int a,int b)
+        {
+            return a + b;
+        }
+        static int Sub(int a, int b)
+        {
+            return a - b;
+        }
+    }
+
+    //1声明委托
+    public delegate int CalculatorDelegate(int a, int b);
+}
+
+二 委托应用：
+主从窗体通信1 从窗体向主窗体发送消息
+主窗体
+namespace Demo1
+{
+    public partial class FrmMain : Form
+    {
+        public FrmMain()
+        {
+            InitializeComponent();
+            FrmSub objfrmSub = new FrmSub();
+            //4 将委托对象与方法关联
+            objfrmSub.showCount = ShowCount;
+            objfrmSub.Show();
+        }
+
+
+        //2根据委托定义方法
+        private void ShowCount(string c)
+        {
+            lblCount.Text = c;
+        }
+    }
+
+    //1定义委托
+    public delegate void ShowCountDelegate(string c);
+}
+
+
+从窗体
+namespace Demo1
+{
+    public partial class FrmSub : Form
+    {
+        //3定义委托对象
+        public ShowCountDelegate showCount;
+        private int count = 0;
+        public FrmSub()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            count++;
+            if (showCount!=null)
+            {
+                //使用委托对象调用方法
+                showCount(count.ToString());
+            }
+        }
+    }
+}
+
+
+
+主从窗体通信2 主窗体向从窗体发送消息
+主窗体
+namespace Demo02
+{
+    public partial class FrmMain : Form
+    {
+        //3创建委托对象
+        private ShowCountDelegate objShowCountDelegate;
+        private int count = 0;
+        public FrmMain()
+        {
+            InitializeComponent();
+            FrmSub1 objFrmSub1 = new FrmSub1();
+            FrmSub2 objFrmSub2 = new FrmSub2();
+            FrmSub3 objFrmSub3 = new FrmSub3();
+
+            //4委托对象关联方法
+            objShowCountDelegate += objFrmSub1.ShowCount;
+            objShowCountDelegate += objFrmSub2.ShowCount;
+            objShowCountDelegate += objFrmSub3.ShowCount;
+
+            objFrmSub1.Show();
+            objFrmSub2.Show();
+            objFrmSub3.Show();
+        }
+
+        private void btn_ClickMe_Click(object sender, EventArgs e)
+        {
+            //5通过委托对象调用方法
+            count++;
+            if (objShowCountDelegate!=null)
+            {
+                objShowCountDelegate.Invoke(count.ToString());
+            }
+        }
+
+        private void btn_reset_Click(object sender, EventArgs e)
+        {
+            count = 0;
+            if (objShowCountDelegate!=null)
+            {
+                objShowCountDelegate(count.ToString());
+            }
+        }
+    }
+
+    //声明委托
+    public delegate void ShowCountDelegate(string s);
+}
+
+
+从窗体1 (从窗体其他雷同)
+namespace Demo02
+{
+    public partial class FrmSub1 : Form
+    {
+        public FrmSub1()
+        {
+            InitializeComponent();
+        }
+        //2根据委托原型创建方法
+        public void ShowCount(string s)
+        {
+            this.lblCount.Text = s;
+        }
+    }
+}
