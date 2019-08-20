@@ -1,0 +1,7 @@
+E:\study\c#\20190820\delegateGenericDemo\PredicateDelegateDemo\bin\Debug\PredicateDelegateDemo.exe.config
+E:\study\c#\20190820\delegateGenericDemo\PredicateDelegateDemo\bin\Debug\PredicateDelegateDemo.exe
+E:\study\c#\20190820\delegateGenericDemo\PredicateDelegateDemo\bin\Debug\PredicateDelegateDemo.pdb
+E:\study\c#\20190820\delegateGenericDemo\PredicateDelegateDemo\obj\Debug\PredicateDelegateDemo.csprojAssemblyReference.cache
+E:\study\c#\20190820\delegateGenericDemo\PredicateDelegateDemo\obj\Debug\PredicateDelegateDemo.csproj.CoreCompileInputs.cache
+E:\study\c#\20190820\delegateGenericDemo\PredicateDelegateDemo\obj\Debug\PredicateDelegateDemo.exe
+E:\study\c#\20190820\delegateGenericDemo\PredicateDelegateDemo\obj\Debug\PredicateDelegateDemo.pdb

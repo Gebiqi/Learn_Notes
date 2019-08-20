@@ -1,0 +1,62 @@
+除了自定义泛型委托之外，使用更多的是微软提供的三种泛型委托类型
+Func		有返回值
+Action		无返回值
+Predicate	条件判断返回值是bool
+为了方便开发者使用，.Net基类库针对在实践中最常用的情况，微软提供了
+一些预定义好的委托，这些委托使用非常广泛
+尤其是在编写Lambda表达式和开发并行计算的时候经常用到
+
+
+    //Func系列泛型委托 注意，最后一个参数是方法的返回值类型
+Func委托系列
+引用一个有返回值的方法，微软给出了17种构造函数
+
+    public delegate TResult Func<TResult>();
+    public delegate TResult Func<T, TResult>(T arg);
+    public delegate TResult Func<T1, T2, TResult>(T1 arg1, T2 arg2);
+    public delegate TResult Func<T1, T2, T3, TResult>(T1 arg, T2 arg2, T3 arg3);
+    public delegate TResult Func<T1, T2, T3, T4, TResult>(T1 arg, T2 arg2, T3 arg3, T4 arg4);
+    //...
+
+注意问题：
+Func委托声明的最后一个泛型类型参数是委托所接收方法的返回值类型
+如果前面有泛型类型参数，这个参数就是委托方法的形参类型
+
+Func委托的基本使用 详见DEMO
+
+Func委托的重要作用 见FuncDelegateDemo
+将方法/Lambda表达式作为方法的参数，可以大大简化开发，提高开发思想的高度
+
+
+
+
+
+**************************************
+Action委托系列
+引用一个没有返回值的方法
+
+
+    ////Action系列泛型委托 注意，没有返回值
+    //public delegate void Func();
+    //public delegate void Func<T>(T arg);
+    //public delegate void Func<T1, T2>(T1 arg1, T2 arg2);
+    //public delegate void Func<T1, T2, T3>(T1 arg, T2 arg2, T3 arg3);
+    //public delegate void Func<T1, T2, T3, T4>(T1 arg, T2 arg2, T3 arg3, T4 arg4);
+    ////...
+
+使用上和Func没有什么区别
+
+
+**************************************
+Predicate委托
+	public delegate bool Predicate<T>(T obj);
+
+    /*Predicate委托定义如下
+     * public delegate bool Predicate<T>(T obj);
+     * 此委托是引用一个返回bool值的方法
+     * 实际开发中这个委托引用的是一个判断条件的方法
+     * 在方法体内部应该写满足条件的判断条件，如果满足条件，返回true
+     */
+
+举例详见 PredicateDelegateDemo
+实际就是当方法参数是条件委托类型，可以使用自定义方法、匿名方法、Lambda表达式写一个和Predicate相匹配的方法来作为实参
