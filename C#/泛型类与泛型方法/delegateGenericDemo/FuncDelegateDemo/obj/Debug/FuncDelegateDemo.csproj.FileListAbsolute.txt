@@ -1,0 +1,7 @@
+E:\study\c#\20190820\delegateGenericDemo\FuncDelegateDemo\bin\Debug\FuncDelegateDemo.exe.config
+E:\study\c#\20190820\delegateGenericDemo\FuncDelegateDemo\bin\Debug\FuncDelegateDemo.exe
+E:\study\c#\20190820\delegateGenericDemo\FuncDelegateDemo\bin\Debug\FuncDelegateDemo.pdb
+E:\study\c#\20190820\delegateGenericDemo\FuncDelegateDemo\obj\Debug\FuncDelegateDemo.csprojAssemblyReference.cache
+E:\study\c#\20190820\delegateGenericDemo\FuncDelegateDemo\obj\Debug\FuncDelegateDemo.csproj.CoreCompileInputs.cache
+E:\study\c#\20190820\delegateGenericDemo\FuncDelegateDemo\obj\Debug\FuncDelegateDemo.exe
+E:\study\c#\20190820\delegateGenericDemo\FuncDelegateDemo\obj\Debug\FuncDelegateDemo.pdb

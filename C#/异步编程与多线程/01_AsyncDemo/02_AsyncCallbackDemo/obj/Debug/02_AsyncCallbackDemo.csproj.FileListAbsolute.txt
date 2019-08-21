@@ -1,0 +1,7 @@
+E:\study\c#\20190820\01_AsyncDemo\02_AsyncCallbackDemo\bin\Debug\02_AsyncCallbackDemo.exe.config
+E:\study\c#\20190820\01_AsyncDemo\02_AsyncCallbackDemo\bin\Debug\02_AsyncCallbackDemo.exe
+E:\study\c#\20190820\01_AsyncDemo\02_AsyncCallbackDemo\bin\Debug\02_AsyncCallbackDemo.pdb
+E:\study\c#\20190820\01_AsyncDemo\02_AsyncCallbackDemo\obj\Debug\02_AsyncCallbackDemo.csprojAssemblyReference.cache
+E:\study\c#\20190820\01_AsyncDemo\02_AsyncCallbackDemo\obj\Debug\02_AsyncCallbackDemo.csproj.CoreCompileInputs.cache
+E:\study\c#\20190820\01_AsyncDemo\02_AsyncCallbackDemo\obj\Debug\02_AsyncCallbackDemo.exe
+E:\study\c#\20190820\01_AsyncDemo\02_AsyncCallbackDemo\obj\Debug\02_AsyncCallbackDemo.pdb

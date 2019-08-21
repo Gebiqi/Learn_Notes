@@ -1,0 +1,10 @@
+E:\study\c#\20190820\01_AsyncDemo\ThreadAccessControls\bin\Debug\ThreadAccessControls.exe.config
+E:\study\c#\20190820\01_AsyncDemo\ThreadAccessControls\bin\Debug\ThreadAccessControls.exe
+E:\study\c#\20190820\01_AsyncDemo\ThreadAccessControls\bin\Debug\ThreadAccessControls.pdb
+E:\study\c#\20190820\01_AsyncDemo\ThreadAccessControls\obj\Debug\ThreadAccessControls.csprojAssemblyReference.cache
+E:\study\c#\20190820\01_AsyncDemo\ThreadAccessControls\obj\Debug\ThreadAccessControls.FrmThread.resources
+E:\study\c#\20190820\01_AsyncDemo\ThreadAccessControls\obj\Debug\ThreadAccessControls.Properties.Resources.resources
+E:\study\c#\20190820\01_AsyncDemo\ThreadAccessControls\obj\Debug\ThreadAccessControls.csproj.GenerateResource.cache
+E:\study\c#\20190820\01_AsyncDemo\ThreadAccessControls\obj\Debug\ThreadAccessControls.csproj.CoreCompileInputs.cache
+E:\study\c#\20190820\01_AsyncDemo\ThreadAccessControls\obj\Debug\ThreadAccessControls.exe
+E:\study\c#\20190820\01_AsyncDemo\ThreadAccessControls\obj\Debug\ThreadAccessControls.pdb

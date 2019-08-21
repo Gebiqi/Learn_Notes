@@ -1,0 +1,10 @@
+E:\study\c#\20190820\01_AsyncDemo\01_AsyncDemo\bin\Debug\01_AsyncDemo.exe.config
+E:\study\c#\20190820\01_AsyncDemo\01_AsyncDemo\bin\Debug\01_AsyncDemo.exe
+E:\study\c#\20190820\01_AsyncDemo\01_AsyncDemo\bin\Debug\01_AsyncDemo.pdb
+E:\study\c#\20190820\01_AsyncDemo\01_AsyncDemo\obj\Debug\01_AsyncDemo.csprojAssemblyReference.cache
+E:\study\c#\20190820\01_AsyncDemo\01_AsyncDemo\obj\Debug\_01_AsyncDemo.Form1.resources
+E:\study\c#\20190820\01_AsyncDemo\01_AsyncDemo\obj\Debug\_01_AsyncDemo.Properties.Resources.resources
+E:\study\c#\20190820\01_AsyncDemo\01_AsyncDemo\obj\Debug\01_AsyncDemo.csproj.GenerateResource.cache
+E:\study\c#\20190820\01_AsyncDemo\01_AsyncDemo\obj\Debug\01_AsyncDemo.csproj.CoreCompileInputs.cache
+E:\study\c#\20190820\01_AsyncDemo\01_AsyncDemo\obj\Debug\01_AsyncDemo.exe
+E:\study\c#\20190820\01_AsyncDemo\01_AsyncDemo\obj\Debug\01_AsyncDemo.pdb

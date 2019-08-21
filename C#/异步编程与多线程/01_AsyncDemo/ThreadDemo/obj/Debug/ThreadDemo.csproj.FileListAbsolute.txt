@@ -1,0 +1,10 @@
+E:\study\c#\20190820\01_AsyncDemo\ThreadDemo\bin\Debug\ThreadDemo.exe.config
+E:\study\c#\20190820\01_AsyncDemo\ThreadDemo\bin\Debug\ThreadDemo.exe
+E:\study\c#\20190820\01_AsyncDemo\ThreadDemo\bin\Debug\ThreadDemo.pdb
+E:\study\c#\20190820\01_AsyncDemo\ThreadDemo\obj\Debug\ThreadDemo.csprojAssemblyReference.cache
+E:\study\c#\20190820\01_AsyncDemo\ThreadDemo\obj\Debug\ThreadDemo.FrmThread.resources
+E:\study\c#\20190820\01_AsyncDemo\ThreadDemo\obj\Debug\ThreadDemo.Properties.Resources.resources
+E:\study\c#\20190820\01_AsyncDemo\ThreadDemo\obj\Debug\ThreadDemo.csproj.GenerateResource.cache
+E:\study\c#\20190820\01_AsyncDemo\ThreadDemo\obj\Debug\ThreadDemo.csproj.CoreCompileInputs.cache
+E:\study\c#\20190820\01_AsyncDemo\ThreadDemo\obj\Debug\ThreadDemo.exe
+E:\study\c#\20190820\01_AsyncDemo\ThreadDemo\obj\Debug\ThreadDemo.pdb
