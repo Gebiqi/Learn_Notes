@@ -1,0 +1,10 @@
+E:\study\Learn_Notes\C#\分页的实现\CSDataPager\CSDataPager\bin\Debug\CSDataPager.exe.config
+E:\study\Learn_Notes\C#\分页的实现\CSDataPager\CSDataPager\bin\Debug\CSDataPager.exe
+E:\study\Learn_Notes\C#\分页的实现\CSDataPager\CSDataPager\bin\Debug\CSDataPager.pdb
+E:\study\Learn_Notes\C#\分页的实现\CSDataPager\CSDataPager\obj\Debug\CSDataPager.csprojAssemblyReference.cache
+E:\study\Learn_Notes\C#\分页的实现\CSDataPager\CSDataPager\obj\Debug\CSDataPager.FrmMain.resources
+E:\study\Learn_Notes\C#\分页的实现\CSDataPager\CSDataPager\obj\Debug\CSDataPager.Properties.Resources.resources
+E:\study\Learn_Notes\C#\分页的实现\CSDataPager\CSDataPager\obj\Debug\CSDataPager.csproj.GenerateResource.cache
+E:\study\Learn_Notes\C#\分页的实现\CSDataPager\CSDataPager\obj\Debug\CSDataPager.csproj.CoreCompileInputs.cache
+E:\study\Learn_Notes\C#\分页的实现\CSDataPager\CSDataPager\obj\Debug\CSDataPager.exe
+E:\study\Learn_Notes\C#\分页的实现\CSDataPager\CSDataPager\obj\Debug\CSDataPager.pdb

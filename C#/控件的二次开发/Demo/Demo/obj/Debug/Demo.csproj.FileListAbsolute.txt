@@ -1,0 +1,13 @@
+E:\study\Learn_Notes\C#\控件的二次开发\Demo\Demo\bin\Debug\Demo.exe.config
+E:\study\Learn_Notes\C#\控件的二次开发\Demo\Demo\bin\Debug\Demo.exe
+E:\study\Learn_Notes\C#\控件的二次开发\Demo\Demo\bin\Debug\Demo.pdb
+E:\study\Learn_Notes\C#\控件的二次开发\Demo\Demo\bin\Debug\MyUIControl.dll
+E:\study\Learn_Notes\C#\控件的二次开发\Demo\Demo\bin\Debug\MyUIControl.pdb
+E:\study\Learn_Notes\C#\控件的二次开发\Demo\Demo\obj\Debug\Demo.csprojAssemblyReference.cache
+E:\study\Learn_Notes\C#\控件的二次开发\Demo\Demo\obj\Debug\Demo.FrmMain.resources
+E:\study\Learn_Notes\C#\控件的二次开发\Demo\Demo\obj\Debug\Demo.Properties.Resources.resources
+E:\study\Learn_Notes\C#\控件的二次开发\Demo\Demo\obj\Debug\Demo.csproj.GenerateResource.cache
+E:\study\Learn_Notes\C#\控件的二次开发\Demo\Demo\obj\Debug\Demo.csproj.CoreCompileInputs.cache
+E:\study\Learn_Notes\C#\控件的二次开发\Demo\Demo\obj\Debug\Demo.csproj.CopyComplete
+E:\study\Learn_Notes\C#\控件的二次开发\Demo\Demo\obj\Debug\Demo.exe
+E:\study\Learn_Notes\C#\控件的二次开发\Demo\Demo\obj\Debug\Demo.pdb

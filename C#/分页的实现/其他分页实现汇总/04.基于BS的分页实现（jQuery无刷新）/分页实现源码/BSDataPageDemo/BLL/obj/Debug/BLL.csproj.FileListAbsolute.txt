@@ -1,0 +1,9 @@
+C:\Users\Administrator\Desktop\BSDataPageDemo\BLL\bin\Debug\BLL.dll
+C:\Users\Administrator\Desktop\BSDataPageDemo\BLL\bin\Debug\BLL.pdb
+C:\Users\Administrator\Desktop\BSDataPageDemo\BLL\bin\Debug\DAL.dll
+C:\Users\Administrator\Desktop\BSDataPageDemo\BLL\bin\Debug\Models.dll
+C:\Users\Administrator\Desktop\BSDataPageDemo\BLL\bin\Debug\DAL.pdb
+C:\Users\Administrator\Desktop\BSDataPageDemo\BLL\bin\Debug\Models.pdb
+C:\Users\Administrator\Desktop\BSDataPageDemo\BLL\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\BSDataPageDemo\BLL\obj\Debug\BLL.dll
+C:\Users\Administrator\Desktop\BSDataPageDemo\BLL\obj\Debug\BLL.pdb
