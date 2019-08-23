@@ -1,0 +1,7 @@
+E:\study\Learn_Notes\C#\C# 6.0x新特性\NewAttributeDemo\NewAttributeDemo\bin\Debug\NewAttributeDemo.exe.config
+E:\study\Learn_Notes\C#\C# 6.0x新特性\NewAttributeDemo\NewAttributeDemo\bin\Debug\NewAttributeDemo.exe
+E:\study\Learn_Notes\C#\C# 6.0x新特性\NewAttributeDemo\NewAttributeDemo\bin\Debug\NewAttributeDemo.pdb
+E:\study\Learn_Notes\C#\C# 6.0x新特性\NewAttributeDemo\NewAttributeDemo\obj\Debug\NewAttributeDemo.csprojAssemblyReference.cache
+E:\study\Learn_Notes\C#\C# 6.0x新特性\NewAttributeDemo\NewAttributeDemo\obj\Debug\NewAttributeDemo.csproj.CoreCompileInputs.cache
+E:\study\Learn_Notes\C#\C# 6.0x新特性\NewAttributeDemo\NewAttributeDemo\obj\Debug\NewAttributeDemo.exe
+E:\study\Learn_Notes\C#\C# 6.0x新特性\NewAttributeDemo\NewAttributeDemo\obj\Debug\NewAttributeDemo.pdb
