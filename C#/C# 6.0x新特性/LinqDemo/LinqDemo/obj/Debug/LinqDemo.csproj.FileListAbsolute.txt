@@ -1,0 +1,7 @@
+E:\study\Learn_Notes\C#\C# 6.0x新特性\LinqDemo\LinqDemo\bin\Debug\LinqDemo.exe.config
+E:\study\Learn_Notes\C#\C# 6.0x新特性\LinqDemo\LinqDemo\bin\Debug\LinqDemo.exe
+E:\study\Learn_Notes\C#\C# 6.0x新特性\LinqDemo\LinqDemo\bin\Debug\LinqDemo.pdb
+E:\study\Learn_Notes\C#\C# 6.0x新特性\LinqDemo\LinqDemo\obj\Debug\LinqDemo.csprojAssemblyReference.cache
+E:\study\Learn_Notes\C#\C# 6.0x新特性\LinqDemo\LinqDemo\obj\Debug\LinqDemo.csproj.CoreCompileInputs.cache
+E:\study\Learn_Notes\C#\C# 6.0x新特性\LinqDemo\LinqDemo\obj\Debug\LinqDemo.exe
+E:\study\Learn_Notes\C#\C# 6.0x新特性\LinqDemo\LinqDemo\obj\Debug\LinqDemo.pdb

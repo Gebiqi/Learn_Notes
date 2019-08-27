@@ -39,13 +39,16 @@ namespace NewAttributeDemo
 
             //测试05static声明静态类的引用
             Console.WriteLine("------测试05static声明静态类的引用--------");
-
+            int result = StaticClassApp.AddABSNew(-10, -20);
+            Console.WriteLine($"-15和-20的绝对值的和是{result}");
             //测试06nameof表达式
             Console.WriteLine("------测试06nameof表达式--------");
-
+            NameofExpress objNameofExpress = new NameofExpress();
+            objNameofExpress.NewMethod(80);
             //测试07Null条件表达式
             Console.WriteLine("------测试07Null条件表达式--------");
-
+            NullOperator objNullOperator = new NullOperator();
+            objNullOperator.NewMethod();
             Console.ReadLine();
         }
     }
