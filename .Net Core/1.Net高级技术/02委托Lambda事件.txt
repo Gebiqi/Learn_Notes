@@ -1,0 +1,73 @@
+1 委托的概念
+委托是一个指向方法的类型
+可以定义变量 
+delegate void MyDel(int a);
+定义MyDel为一个委托类型，该类型创建的变量对象可以指向一个没有返回值、参数为int的方法
+基本使用参见C#中笔记
+
+2 委托的应用
+.....
+
+7 Lambda表达式改造GetMax
+重点掌握委托的使用，泛型委托的定义和使用见Demo
+实际开发中，主要使用微软给我们定义好的几个泛型委托就可以了
+
+
+8针对集合类型编写自定义MyWhere扩展方法
+具体参见Demo 以后写的比较少，熟悉思想
+
+9 集合的常用高级扩展方法
+where
+select
+orderby
+聚合函数max min average
+
+**using System.Linq;
+            int[] nums1 = new int[] {1,2,3,4,5 };
+            List<int> list1 = nums1.OrderBy(i => i).ToList();//使用linq扩展方法将数组集合转为List集合
+            int[] nums2 = list1.ToArray();//使用linq扩展方法将List集合转为数组集合
+
+First 获取第一个元素，如果一个都没有，抛出异常
+FirstOrDefault 获取第一个元素，如果一个都没有，则返回默认值 int是0 string是null
+Single 获取唯一一个元素，如果没有或者不止一个元素，抛出异常
+SingleOrDefault 获取唯一的元素，如果没有元素，则返回默认值  同上	如果不止一个元素，则抛出异常
+
+
+扩展方法可以组合使用====>链式编程
+
+
+10 委托的组合
+委托是可以相加的，会形成一个新的委托对象
+“-”是可以去掉其中某个委托对象
+
+委托主要用途是事件，事件是没有返回值的
+
+11 事件的使用
+public event Action eventName;
+event+=f1;
+event+=f2;
+event-=f1;
+
+12事件的本质
+事件是由一个私有的委托
+和add、remove两个方法组成
+         private Action _MSG;
+        public event Action MSG
+        {
+            add
+            {
+                this._MSG += value;
+            }
+            remove
+            {
+                this._MSG -= value;
+            }
+        }
+
+
+事件、索引器、属性
+本质上都是方法
+接口中只可以定义方法，也可以定义事件、索引、属性
+索引器和属性的set方法可以获得value参数，即赋值的value值
+
+
