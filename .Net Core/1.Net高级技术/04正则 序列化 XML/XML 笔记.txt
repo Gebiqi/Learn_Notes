@@ -1,0 +1,42 @@
+XML文件特点
+*XML大小写敏感，必须大小写匹配
+只能有一个根节点
+有节点，用开始节点标签和结束节点标签组成 或者自闭合（开始和结束之间没有内容的情况下可以使用）
+节点可以有子节点（嵌套）
+节点可以有属性，属性值要有双引号""包裹
+节点可以有内部文本
+注释方式 <!-- xxx -->
+
+
+XML文件读取
+XmlDocument doc = new XmlDocument();
+doc.Load("路径");//参数也可以是流
+XmlNodeList stuNodes = doc.DocumentElement.ChildNodes;
+foreach(XmlNode stuNode in stuNodes)
+{
+XmlElement stuEle = (XmlElement)stuNode;
+string stuId = stuEle.GetAttribute("StuID");
+XmlNode stuNameNode = stuEle.SelectSingleNode("StuName");
+string stuName = stuNameNode.InnerText;
+console.write("...");
+}
+
+
+
+XML文件生成
+XmlDocument doc = new XmlDocument();
+XmlElement ePersons=doc.CreateElement("Persons");
+doc.AppendChild(ePersons);
+foreach(Person person in persons)
+{
+XmlElement ePerson = doc.CreateElement("Person");
+ePerson.SetAttribute("id",person.id.ToString());
+XmlElement eName=doc.CreateElement("Name");
+eName.InnerText=person.Name;
+XmlElement eAge=doc.CreateElement("Age");
+eAge.InnerText=person.Age.ToString();
+ePerson.AppendChild(eName);
+ePerson.AppendChild(eAge);
+ePersons.AppendChild(ePerson);
+}
+doc.Save("路径");

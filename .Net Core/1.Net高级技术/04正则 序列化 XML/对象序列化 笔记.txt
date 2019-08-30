@@ -1,0 +1,37 @@
+序列化：
+将一个对象保存到一个二进制数据中
+反序列化：
+将二进制数据转换成对象
+目的：
+将对象持久化保存，不要造成数据丢失
+
+BinaryFormatter类有两个方法：
+二进制序列化
+void Serialize(Stream stream,object obj)
+二进制反序列化
+object Deserialize(Stream stream)
+
+需要把一个类标记为可序列化，才可以进行序列化操作
+BinaryFormatter bf = new BinaryFormatter();
+using(FileStream fs = File.OpenWrite("路径"))
+{
+bf.serialize();
+}
+
+
+
+反序列化:
+object obj = bf.deserialize();
+
+
+注意，不同程序集中的相同类，不能互相序列化和反序列化
+
+***自定义类、字段,内部成员类,父类等都需要被标记为可序列化[serializable]
+
+一旦类有改变，则之前序列化的数据尽量不要反序列化使用了，有可能会报错
+
+
+应用：ASP.net中进程外Session要求对象可序列化，内部通过序列化实现的
+
+
+另外还有xml序列化和json序列化等不同格式的序列化方式
