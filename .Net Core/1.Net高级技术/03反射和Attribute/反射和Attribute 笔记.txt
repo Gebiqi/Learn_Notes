@@ -1,0 +1,65 @@
+1 反射入门
+EntityFramework,Asp.Net等几乎所有的框架都大量用到了反射，是从菜鸟到牛人的必经之路。
+反射可以做什么？
+动态创建对象
+动态赋值
+动态调用方法
+写代码的时候开发人员也许都不知道要执行什么 
+
+反射简介
+.Net中的类都是被编译成IL，反射就可以在运行时获得类的信息（有哪些方法、字段、构造函数、父类是什么等等）
+还可以动态创建对象、调用成员
+每个类对应一个Type对象，一切皆对象 
+每个方法对应一个MethodInfo对象
+每个属性对应一个PropertyInfo对象
+这些就是类、方法、属性的“元数据”（meta data）。
+这些对象和这个类的对象没有直接关系。是每个成员对应一个元数据对象。
+
+获取类信息对象Type的方法：
+Type type = person.GetType();
+Type type = typeof(Person);
+Type type = Type.GetType("命名空间XXX.Person");
+
+调动public且无参的构造函数
+ object obj1 = Activator.CreateInstance(type1);//CreateInstance返回值是object类型
+            Person pp = (Person)obj1;
+
+
+2 易错 this本质
+this不是代表当前类，而是代表当前对象，可以看成是当前对象的一个变量
+
+
+3 Type常见成员
+	很多，详见Demo
+
+5 6 7 反射调用示例
+利用反射仿PropertyGrid
+利用反射做一个Clone对象的方法
+
+
+8 Attribute简介
+特性/标签
+举例：[DisplayName("xxx")]  [Obsolete] “已过时”
+给属性加特性	标签的威力不来自字符本身，而是来自解读标签的力量 看程序读到标签后怎么相应处理，才是关键
+后续重点关心它实现的原理是什么
+关于attribute的使用 见demo
+
+
+9 自定义attribute及使用，见demo
+有些attribute可以标注在某些对象上，有些则不行
+深入：可以给attribute也加attribute
+[AttributeUsage(AttributeTargets.All)]
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Event)]
+
+
+10 反射实例orm
+
+
+
+
+
+
+
+
+
+
