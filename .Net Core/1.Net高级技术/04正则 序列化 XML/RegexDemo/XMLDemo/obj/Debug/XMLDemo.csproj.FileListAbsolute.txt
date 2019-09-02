@@ -1,0 +1,7 @@
+E:\study\Learn_Notes\.Net Core\1.Net高级技术\04正则 序列化 XML\RegexDemo\XMLDemo\bin\Debug\XMLDemo.exe.config
+E:\study\Learn_Notes\.Net Core\1.Net高级技术\04正则 序列化 XML\RegexDemo\XMLDemo\bin\Debug\XMLDemo.exe
+E:\study\Learn_Notes\.Net Core\1.Net高级技术\04正则 序列化 XML\RegexDemo\XMLDemo\bin\Debug\XMLDemo.pdb
+E:\study\Learn_Notes\.Net Core\1.Net高级技术\04正则 序列化 XML\RegexDemo\XMLDemo\obj\Debug\XMLDemo.csprojAssemblyReference.cache
+E:\study\Learn_Notes\.Net Core\1.Net高级技术\04正则 序列化 XML\RegexDemo\XMLDemo\obj\Debug\XMLDemo.csproj.CoreCompileInputs.cache
+E:\study\Learn_Notes\.Net Core\1.Net高级技术\04正则 序列化 XML\RegexDemo\XMLDemo\obj\Debug\XMLDemo.exe
+E:\study\Learn_Notes\.Net Core\1.Net高级技术\04正则 序列化 XML\RegexDemo\XMLDemo\obj\Debug\XMLDemo.pdb

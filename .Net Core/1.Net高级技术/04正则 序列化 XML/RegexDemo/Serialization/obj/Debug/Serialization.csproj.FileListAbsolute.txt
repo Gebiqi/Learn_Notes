@@ -1,0 +1,7 @@
+E:\study\Learn_Notes\.Net Core\1.Net高级技术\04正则 序列化 XML\RegexDemo\Serialization\obj\Debug\Serialization.csprojAssemblyReference.cache
+E:\study\Learn_Notes\.Net Core\1.Net高级技术\04正则 序列化 XML\RegexDemo\Serialization\obj\Debug\Serialization.csproj.CoreCompileInputs.cache
+E:\study\Learn_Notes\.Net Core\1.Net高级技术\04正则 序列化 XML\RegexDemo\Serialization\bin\Debug\Serialization.exe.config
+E:\study\Learn_Notes\.Net Core\1.Net高级技术\04正则 序列化 XML\RegexDemo\Serialization\bin\Debug\Serialization.exe
+E:\study\Learn_Notes\.Net Core\1.Net高级技术\04正则 序列化 XML\RegexDemo\Serialization\bin\Debug\Serialization.pdb
+E:\study\Learn_Notes\.Net Core\1.Net高级技术\04正则 序列化 XML\RegexDemo\Serialization\obj\Debug\Serialization.exe
+E:\study\Learn_Notes\.Net Core\1.Net高级技术\04正则 序列化 XML\RegexDemo\Serialization\obj\Debug\Serialization.pdb
