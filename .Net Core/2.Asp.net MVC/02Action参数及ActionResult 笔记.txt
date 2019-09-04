@@ -1,0 +1,142 @@
+一 Action参数类型及赋值方法大致有以下三种，具体详见Demo
+1 Model类
+2 普通参数string,int	参数个数比较少的情况下用
+3 表单集合FormCollection   相当于string[] (处理Form表单中的Post请求)
+
+二 需要注意的几个问题：
+1action方法不能重载，除非标注上Attribute
+2可以Model和具体类型参数混用，就是上述方式中的1+2混用
+3对于方法1 如果不赋值则自动给默认值：int 默认值0 bool默认值false string默认值null 对于方法2，如果不赋值，值类型会报错，必须设置可空类型
+4对于方法2 可以给参数增加默认值，放到参数列表中的最后
+5对于上传文件
+	<form action="~/default/Register" method="post" enctype="multipart/form-data">
+	<input type="file" name="file" value="" />
+
+        [HttpPost]
+        public ActionResult Register(DefaultModel model,HttpPostedFileBase file, string gender = "男")
+        {
+            file.SaveAs(Server.MapPath("~/"+file.FileName));
+            return Content("注册成功");
+        }
+
+三 View的查找
+默认Return View();查找和方法名同名的cshtml
+也可以指定View显示 Return View("xxx");
+分层级查找：先找同一个controller中有没有该名字的cshtml,如果没有，再去Shared文件夹中去找
+可以使用的模板文件类型aspx,ascx,cshtml,vbhtml
+View中前面参数是跳转的模板名，后面参数是Model传值
+        public ActionResult Register()
+        {
+            DefaultModel df = new DefaultModel();
+            df.Name = "ABC";
+            return View("AAA",df);
+        }
+
+假如传值就是一个string，会在View方法重载时，系统认为string是一个母版页名，会出问题
+此时解决办法：
+string s="aaa";
+return View("AAA",(object)s);
+
+四 Action返回值 ActionResult是以下几种返回值的父类，所以作为通用方法返回类型
+返回值有以下几种：
+1 View()  ViewResult
+2 Redirect() RedirectResult
+3 ContentResult
+4 FileContentResult
+	文件流FileStream不需要using使用dispose，这个资源会由MVC框架自动回收
+因为MVC中有一个return File()方法，所以如果调用.net的System.IO.File.只能加上命名空间来引用
+5 HttpNotFoundResult 返回404
+6 JavaScriptResult 返回一段Javascript代码  因为违反分成原则，所以尽量不要使用
+7 JsonResult
+	return Json(object);把一个对象序列化成Json字符串返回给浏览器
+
+五 Json+Ajax，其中ajax请求方式type:post（默认json方法是禁止get请求，如允许get，需要参数中说明:JsonRequestBehavior.AllowGet）
+		建议使用默认不允许Get请求，以避免CSRF攻击造成的风险
+		但Ajax没法跨域，就没法利用Ajax的post请求方式进行攻击
+
+
+asp.net MVC默认的json方法实现有如下缺点：
+1 日期类型的格式化成字符串很差，在客户端要用js代码格式化处理，很麻烦。
+2 json字符串中属性的名字和C#中大小写一样，不符合js中驼峰命名的习惯。
+3 无法处理循环引用的问题，会报错。
+
+
+后面项目阶段会介绍解决方案：使用Json.Net替换
+
+
+
+六 View和Redirect的区别
+Redirect("/Test/F1")
+RedirectToAction("F1") 可以省掉当前controller名
+RedirectToAction("F1","Test")
+
+和Return View("F1")的区别：
+1前者和服务器发生两次交互，地址栏也发生变化/Test/F1
+2后者只和服务器发生了一次交互,地址栏仍然是/Test/Index
+3前者无法取到上面代码ViewBag的赋值，因为ViewBag只在本次action内有效，而redirect是让浏览器重新请求一个新地址，跳出了该次action方法
+ 后者可以拿到数据，因为是让服务器直接通过view渲染页面，在同一个方法内执行。
+
+Retrun View直接渲染模板视图，而redirect和redirectToAction都是重定向到action方法，会执行对应的方法
+什么情况用View？
+服务器端产生数据，想让一个View去显示
+什么时候用Redirect 想让浏览器去访问另一个页面
+
+一般都会先访问Action，再渲染View，而不会直接主动访问View
+
+七 其他杂项
+1TempData 不建议使用
+有时需要两次请求时保存一个数据时，可以使用，一次暂存，取一次用完后删除
+使用Session 也不能超过Session时长
+存入：
+Session["verifyCode"]=new Random().Next().ToString();
+读取：
+String code = (string)Session["verifyCode"];
+Session["verifyCode"]=null;
+...
+
+自己总结区别：TempData和ViewBag\ViewData\Model区别
+
+
+2HttpContextBase
+MVC中大部分都是基于。。。base类，是原生类的封装
+所以尽量使用这些类，不要使用.Net原生类
+
+void AAA(string path) //"~/1.jpg"
+{
+string s = HttpContext.Current.Server.MapPath(path);
+}
+
+
+void AA(HttpContextBase ctx,string path)
+{
+ string s = ctx.Server.MapPath(path);
+}
+
+AA(this.Httpcontext,"~/1.jpg");
+
+
+MVC中Session也是MVC封装的base类，也不是原生的asp.net原生的Session了
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

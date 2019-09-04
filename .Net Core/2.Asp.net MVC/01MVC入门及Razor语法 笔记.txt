@@ -1,0 +1,104 @@
+什么是MVC？
+M（Model）负责在View和Controller之间数据传递，用户输入的数据放入Model对象发送给Controller；要显示的数据由Controller放入Model传给给View.View和Controller之间不直接交互
+V（View） 相当于一个html文件的拼接，这样写代码看着简单和规范
+C（Controller）数据处理逻辑都在这里
+
+好多语言都有类似mvc的框架开发模式
+ASP.NET MVC就是基于MVC模式的ASP.NET网站开发
+ASP.NET MVC和“三层架构”没有任何关系，三层架构中的UI层可以通过MVC来实现
+“约定大于配置”，基础阶段按默认配置来
+
+
+第一个MVCDemo 体会三者如何协同工作
+表单字段的Name属性和model对象的属性名保持一致即可传递，尽量大小写一致
+@model引用类
+@Model.xxx调用对象的属性值
+用户不会直接访问V  (.cshtml),这个文件是由mvc框架调用生成一个真正的html文件返回给用户的
+
+
+cshtml（Razor模板）语法：
+1	非常简单，@启动的区域为标准的c#代码，但@前不能紧跟字符串，提高优先级@(变量名)
+	  其他部分或者遇到标签都会识别成普通的html代码（或者@: 但不推荐使用）（如不需要标签，推荐使用<text></text>）
+2	用法：	@{c#代码块}
+	@Model
+	@Model.dog.Name
+	@if(),@foreach()等c#语句
+	如标签属性中嵌套c#代码，建议c#代码用“”，标签的属性用‘’，但用“”也没问题
+3	@变量名会自动将变量中的内容进行encode转义成字符串显示
+        @{ string s="<a href='www.baidu.com'>百度</a>"}
+        @s		//encode转义输出
+        @Html.Raw(s)//不再转义
+
+4	注释方式：一般不会用
+@* xxx *@
+
+@*
+xxxxxxxx
+xxxxxxx
+*@
+
+5	HTML标签属性的虚拟路径转换表示"~/"，在生成html中都会以虚拟路径进行处理
+
+
+6	关于自定义属性值特殊显示说明：
+        @{ bool b1=false; }
+        <div hello="@b1">aaa</div>
+
+==》	<div>aaa</div>
+
+        @{ bool b1=true;}
+        <div hello="@b1">aaa</div>
+
+==》	<div hello="hello">aaa</div>
+
+
+Razor语法规则总结三点：
+1 @就是C#,<aaa></aaa>就是html
+2 如果想让被识别成html的当成c#，就用@()
+3 如果想让被识别成C#的当成html,就用<span><text>等标签
+
+
+
+Razor本质：
+动态编译
+页面保持简单，复杂逻辑代码写在controller中
+编译生成的类，继承自WebViewPage
+调用的方法和属性其实都是继承自父类的
+
+
+
+补充知识点：
+1动态类型 dynamic
+dynamic p1= new ExpandoObject();
+p1.aa="abc";
+p1.bb=12;
+console.writeline(p1.aa);
+
+p1.aa=false;
+console.writeline(p1.aa);
+
+2推断类型 var
+通过var生成的匿名类（Internal类）对象
+p1为只读的，只能读取p1的内容，不能修改
+            var p1 = new { name = "abc", age = 11 };
+            p1.name = "22a";
+p1只能在本程序内使用
+
+
+
+
+
+Controller给View传递数据的方式
+1 通过Model
+2 ViewData
+3 ViewBag
+
+结论：ViewBag是一个dynamic类型，是ViewData的一个动态封装，使用更方便，共享数据，互相set和get都可以
+
+但是因为MVC的html辅助类对Viewbag有一些特殊的约定，所以尽量不要使用，尽量使用Model
+
+model方式有两种：强类型model和弱类型model
+强类型，View开头有@model的类声明	程序中@Mode是具体类型的 就会有编译器的检查和开发时的自动提示
+弱类型，View开头没有@model的类声明	这时候@Model 是dynamic动态类型
+
+

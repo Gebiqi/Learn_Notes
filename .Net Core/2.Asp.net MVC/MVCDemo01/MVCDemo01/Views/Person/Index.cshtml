@@ -1,0 +1,33 @@
+﻿@model System.Data.DataTable
+@using System.Data;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>人员列表</title>
+</head>
+<body>
+    <div> 
+        <table>
+            <thead>
+                <tr><td>姓名</td><td>年龄</td><td>电话</td><td>操作</td></tr>
+            </thead>
+            @foreach (DataRow row in Model.Rows)
+            {
+                <tr>
+                    <td>@row["Name"]</td>
+                    <td>@row["Age"]</td>
+                    <td>@row["Tel"]</td>
+                    <td><a href="~/Person/Update?id=@row["Id"]">修改</a><a href="~/Person/Del?id=@row["Id"]">删除</a></td>
+                </tr>
+            }
+        </table>
+        <a href="~/Person/Add">新增</a>
+    </div>
+</body>
+</html>

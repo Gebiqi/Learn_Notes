@@ -1,0 +1,36 @@
+﻿@model MVCDemo01.Models.NumAdd
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>加法</title>
+</head>
+<body>
+    <p>
+        姓名：@ViewData["name"]<br />
+        年龄：@ViewData["age"]<br />
+        性别:@ViewBag.gender
+    </p>
+    <div> 
+        <form action="/Add/Index" method="post">
+            Num1:<input type="text" name="Num1" value="@Model.Num1" />+
+            Num2:<input type="text" name="Num2" value="@Model.Num2" /> +
+            <input type="submit"  value="="/>
+            <span>@Model.Result</span>
+        </form>
+
+        @{ string s = "<a href='www.baidu.com'>百度</a>";}
+        @s
+        @Html.Raw(s)
+        @{ bool b1 = true;}
+        <div hello="@b1">aaa</div>
+
+    </div>
+</body>
+</html>
