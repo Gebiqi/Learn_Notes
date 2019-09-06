@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+    </div>
+    <input type="button" id="btn" name="btn" value="点我" />
+</body>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>    
+    $(function () {
+        $("#btn").click(function () {
+            $.ajax({
+                url: "/IsAjax/ajax",
+                method: "post",
+                success: function (res) {
+                    alert(res.Name);
+                },
+                error: function () {
+                    alert("error");
+                }
+            })
+        })
+    })
+</script>
+</html>

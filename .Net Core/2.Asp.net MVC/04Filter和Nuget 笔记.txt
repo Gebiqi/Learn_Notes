@@ -1,0 +1,90 @@
+AOP 面向切面编程 Aspect Oriented Programming
+
+面向过程	if、for、函数
+面向对象	封装、继承、多态
+面向切面	是一种架构思想
+		把一些公共行为共享给各个调用
+		例如：异常日志记录、权限检查
+
+都是解决“如何组织代码”的问题
+
+ASP.NET MVC中有四种主要的Filter接口
+1）IAuthorizationFilter
+	检查用户是否有权限执行Action，一般在Action执行前，执行接口的OnAuthorization方法
+2) IActionFilter
+	在Action执行之前执行OnActionExecuting方法，但是在OnAuthorization之后执行的
+	在Action执行之后执行OnActionExecuted方法
+3) IResultFilter
+	在每个ActionResult执行的前后执行
+4) IExceptionFilter
+	在Action执行中发生未处理异常的时候，执行OnException方法
+在MVC中仍然可以使用Global的Application_Error，但是建议用IExceptionFilter
+
+使用步骤：
+1编写接口的实现类
+2如需要设置为全局过滤器，则在Global中设置
+GlobalFilters.Filters.Add(new XXXFilter());
+
+***在任何过滤器接口实现类中，如果给filterContext.Result赋值了，则不再执行Action方法
+//如果给filterContext.Result赋值了，则不再执行Action方法及返回Actionresult了
+//直接将filterContext.Result内容return 返回
+//作用：组织Action执行并返回原因
+最好不要使用
+
+
+
+//不推荐：filterContext.HttpContext.Response.Redirect("/Login/Index");
+推荐使用：
+ContentResult result = new ContentResult();
+result.Content = "未登录";
+filterContext.Result = result;
+or
+filterContext.Result = new RedirectResult("/Login/Index");
+
+
+也可以通过filterContext.ActionDescriptor.GetCustomAttributes取得attribute进行判定是否允许在过滤器中单独处理
+另外，也可以通过attribute标注在方法或类上以实现自定义
+这就是非全局过滤器
+非全局过滤器的实现：
+1 编写一个类，只要继承FilterAttribute类，并实现以上的过滤器接口并实现相应方法即可
+2 在某个控制器或者某个方法上标注该attribute，则执行相应控制器的方法时会调用进行相应过滤作用
+
+具体详见Demo
+
+
+
+Nuget
+全新https://www.nuget.org/安装插件方式
+使用方式有两种：1命令行2图形界面
+https://www.nuget.org/
+
+可通过搜索关键字来寻宝
+学会如何使用两种方式安装卸载
+卸载三种方式
+1图形界面
+2命令行（更推荐）
+“程序包管理器控制台”
+3手动删packages.config和Dll
+
+有的安装包会更改app.config
+
+
+把项目copy走的时候，不需要把开发包也打包，vs会自动重新下载所有依赖的开发包
+
+ 
+
+命令行的使用：
+1 配合Nuget.org网站查找相应开发包
+2 Install-Package 程序包名字 不加版本号是安装最新版本
+  UnInstall-Package 程序包名字
+3 如果要安装指定版本
+  Install-Package -Version 1.0.3.1
+
+4 其他
+	Get-Package   Update-Package
+	可以去百度搜索Nuget命令自学
+
+提示修改文件内容时，尽量选择“是”或者“全是”
+
+
+

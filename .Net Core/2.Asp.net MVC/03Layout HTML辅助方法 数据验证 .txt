@@ -1,0 +1,121 @@
+Layout
+布局页 相当于母版页
+在布局页面中挖一个窟窿
+@RenderBody() 默认子页面里的主要内容
+@RenderSection（"Header"） 	@RenderSection（"Footer"） 第二个参数默认是true，必须要填坑的意思
+@ViewBag.Title
+程序子页面引用布局页，程序页面自己的东西写在下面即可 
+@RenderBody 子页面内容自动载入
+@{Layout="~/Views/......cshtml";} 确定使用哪个布局文件
+@{ViewBag.Title=""; }			设置标题
+@section Header				填坑
+{
+	我是头部
+}
+@section Footer
+{
+	我是尾部
+}
+
+**如果section第二个参数是false，可以不填坑
+也可以通过
+@if(IsSectionDefined("Sec1"))来判断并分支处理
+@if(IsSectionDefined("Sec1"))
+{
+	@RenderSection("Sec1")	
+}
+else
+{
+	 <text>默认内容</text>
+}
+
+
+
+可以在Vies文件夹下建一个_ViewStart.cshtml文件，以实现其他页面的默认Layout加载，
+_ViewStart.cshtml文件名不能变
+如果想覆盖也可以显示写明
+
+
+@ViewBag.和@Page.都是dynamic类型，用法也一样都可以一样用
+
+
+Dropdownlist等控件的使用
+但强烈不建议使用html辅助方法来开发View页面，会将后端代码和前端混在一起，由程序自动生成不易于后期控制调优
+
+
+判别是否来自Ajax请求
+Request.IsAjaxRequest()
+
+数据验证：
+MVC在数据传值到view时会自动验证，验证失败也不会直接报错抛出异常，而是把处理交给程序员
+http://localhost:20081/DataValidate/v1?Age=abc	验证失败
+
+http://localhost:20081/DataValidate/v1?Age=111
+
+遍历每个错误消息
+一般会使用attribute来验证字段的值
+常用验证attribute
+[Required] 这个属性必须
+int默认值是0，可以不赋值不报错
+int?没有默认值，如果有required属性则必须填一个值，否则校验失败
+
+[StringLength(100)]字符串最大长度100
+[StringLength(100,MininumLength=10)]字符串最大长度100，最小10
+
+[RegularExpression(@"")]正则校验
+
+[Range(18,60)]  整数数值 范围 
+
+[Compare("xxx")] 值与另一个属性值必须相同
+
+[EmailAddress] 必须是一个Email地址
+
+([Phone] 电话号码,规则有限，外国使用，建议使用正则)
+
+
+也可以自定义所有 验证标签attrihbute的Errormessage信息：
+[EmailAddress(ErrorMessage="请输入正确得Email地址")]
+
+可以用占位符把当前属性名输出
+[EmailAddress(ErrorMessage="{0}错误，请输入正确得Email地址")]
+{0}代表"EmailAddress"
+
+数据验证+Html辅助类高级控件可以实现很多简化开发，连客户端+服务器端校验都自动实现了，但有点太“winform”了。
+
+
+自定义验证规则
+直接或间接继承自ValidationAttribute 
+
+1）如果能使用正则表达式校验，直接从RegularExpressionAttribute继承
+
+2）也可以继承自ValidationAttribute，重写IsValid方法
+
+3) 还可以让Model类实现IvalidatableObject接口
+
+***可以参考网上文章 ASP.NET MVC下四种验证编程方式***
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

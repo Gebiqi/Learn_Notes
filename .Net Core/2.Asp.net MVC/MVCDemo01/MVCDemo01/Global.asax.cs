@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVCDemo01.Filters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,9 @@ namespace MVCDemo01
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            GlobalFilters.Filters.Add(new CheckAuthorizationFilter());
+            GlobalFilters.Filters.Add(new ActionLogFilter());
+            GlobalFilters.Filters.Add(new ExceptionLogFilter());
         }
     }
 }

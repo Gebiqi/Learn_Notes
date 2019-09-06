@@ -118,8 +118,31 @@ AA(this.Httpcontext,"~/1.jpg");
 MVC中Session也是MVC封装的base类，也不是原生的asp.net原生的Session了
 
 
+如果真的需要使用HttpContext类，就要通过System.Web.HttpContext加命名空间来调用
+Views的web.config中的
+System.web.webPages.razor的pages/namespaces节点下配置add命名空间，这样就不用using了
 
 
+
+关于模板页面自动using
+@{ 
+    Person p1 = new Person();//自动using
+}
+
+只需要在Views下web.config中配置命名空间
+  <system.web.webPages.razor>
+    <host factoryType="System.Web.Mvc.MvcWebRazorHostFactory, System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+    <pages pageBaseType="System.Web.Mvc.WebViewPage">
+      <namespaces>
+        <add namespace="System.Web.Mvc" />
+        <add namespace="System.Web.Mvc.Ajax" />
+        <add namespace="System.Web.Mvc.Html" />
+        <add namespace="System.Web.Routing" />
+        <add namespace="MVCDemo01" />
+        <add namespace="MVCDemo01.Models" />
+      </namespaces>
+    </pages>
+  </system.web.webPages.razor>
 
 
 

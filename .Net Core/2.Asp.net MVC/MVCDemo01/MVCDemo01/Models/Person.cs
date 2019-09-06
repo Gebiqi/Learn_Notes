@@ -11,6 +11,9 @@ namespace MVCDemo01.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
+        [CNPhoneNum]
         public string Tel { get; set; }
+        [QQNumber]
+        public string QQ { get; set; }
     }
 }
