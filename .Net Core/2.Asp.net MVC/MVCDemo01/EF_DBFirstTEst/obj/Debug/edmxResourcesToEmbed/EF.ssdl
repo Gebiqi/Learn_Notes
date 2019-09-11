@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“Test.dbo.CardAccount”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="CardAccount">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="CurrentMoney" Type="money" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Age" Type="int" />
+  </EntityType>
+  <EntityType Name="T_Persons">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="TestModelStoreContainer">
+    <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Persons" EntityType="Self.T_Persons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CardAccount" EntityType="Self.CardAccount" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CardAccount].[Id] AS [Id], 
+    [CardAccount].[StudentId] AS [StudentId], 
+    [CardAccount].[CurrentMoney] AS [CurrentMoney]
+    FROM [dbo].[CardAccount] AS [CardAccount]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

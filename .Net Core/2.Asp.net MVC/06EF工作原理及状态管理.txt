@@ -1,0 +1,110 @@
+EF原理：
+1 EF会根据语句通过“表达树式”动态生成相应SQL语句，而不是将所有数据集加载到内存里再进行过滤
+2 EF查询的延迟执行，是在遍历结果集时才执行
+3 如果需要立即执行出结果，再语句最后增加.toList()或者toArray()
+4 查看Update工作原理会发现只更新了更改内容的字段
+5 注意复合过滤查询，如果中间有出现toList()或者toArray()，或者定义result类型为IEnumerable
+	则第二次过滤.where()将会从内存中对集合或数组进行数据过滤，不再通过sql查询语句方式
+	效率会很低,只有定义类型为var或 IQueryable
+证明了一点：只有对IQueryable类型集合数据进行操作才会转换成SQL操作，否则很有可能会通过内存执行
+6 EF是跨数据库的，如果迁移到MYSQL上，就会翻译成MYSQL语法，要配置对应数据库的ENtity Framework Provider
+7 禁用DBMigration相关sql执行语句
+	在DBContext类构造函数中增加如下语句：
+	 Database.SetInitializer<MyDBContext>(null);//去掉DBMigration的sql相关执行
+
+8 不要“手里有锤子，到处都是钉子”
+	通过EF直接执行SQL语句
+	非查询语句：ctx.Database.ExecuteSqlCommand
+	查询语句：var result = ctx.Database.SqlQuery<groupByAge>("select age,count(*) cnt from [T_Persons] group by age order by age");
+		int r = ctx.Database.SqlQuery<int>("select count(*) from T_Persons").SingleOrDefault();
+
+9 不是所有的Lambda写法都能被支持
+如果不支持，请改用原始SQL语句或其他函数库方式解决
+ Person pp = ctx.Persons.Where(a=>Convert.ToString(a.Id)=="3").SingleOrDefault();
+报错：
+System.NotSupportedException:“LINQ to Entities 不识别方法“System.String ToString(Int64)”，因此该方法无法转换为存储表达式。”
+EF提供了一个SQLServer专用的类SqlFunctions,对EF不支持的函数提供了支持
+命名空间：
+using System.Data.Entity.SqlServer;
+var result = ctx.Persons.Where(p=>SqlFunctions.DateDiff("hour",p.CreateDateTime,DateTime.Now)>1);
+
+
+
+10 EF对象状态管理***
+EF会自动跟踪对象状态的改变——状态管理
+
+EF五种对象状态：
+Detached(游离态、脱离态)
+Unchanged
+Added
+Deleted
+Modified
+
+对象状态入口
+a)new创建的
+b)从DB查询的
+
+整个流程图通过例子多熟悉就可以记住
+
+增删改的新方法
+ctx.Entry(p1).State = System.Data.Entity.EntityState.Added;
+...
+
+
+可以通过修改状态管理器中某个字段的Ismodify的值为true，获得数据的更新
+详见Demo
+
+注意以下做法并不会删除所有Age=11的数据，删除都是以Id主键为依据进行的
+                //以下方式并不会删除所有Age=11的记录
+                Person p1 = new Person() { Age = 11 };
+                ctx.Persons.Attach(p1);
+                ctx.Entry(p1).State = System.Data.Entity.EntityState.Deleted;
+                ctx.SaveChanges();
+
+EF中对象的状态改变都是依赖于Id，（Added除外）
+
+
+实际应用中，建议先查再删改，问题会最小化
+
+11 EF优化的一个技巧
+如果查询出来对象只是提供显示使用，而不会修改、删除后保存回数据库，则可以使用
+AsNoTracking()来使得查询出来的对象时Detached状态，这样对对象的修改也还是Detached状态，EF不会跟踪这个对象状态的改变，能够提升性能。
+                var p1 = ctx.Persons.Where(p => p.Age == 11).FirstOrDefault();
+                Console.WriteLine(ctx.Entry(p1).State);
+
+                var p2 = ctx.Persons.AsNoTracking().Where(p => p.Age == 11).FirstOrDefault();		p2.Age++;
+                Console.WriteLine(ctx.Entry(p2).State);
+因为AsNoTracking()是DbQuery类（DbSet的父类）的方法，所以要现在DbSet后调用该方法。
+
+
+设置了AsNoTracking()再想更新数据，则需要重新加入EF到状态管理器中
+                var p3 = ctx.Persons.AsNoTracking().First();
+                Console.WriteLine(ctx.Entry(p3).State);          
+                //ctx.Entry(p3).State = System.Data.Entity.EntityState.Modified;
+		ctx.Entry(p3).State = System.Data.Entity.EntityState.Unchanged;
+                p3.Name = "rrr";
+                Console.WriteLine("*"+ctx.Entry(p3).State);
+                ctx.SaveChanges();
+                Console.WriteLine("**"+ctx.Entry(p3).State);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_FluntAPI\bin\Debug\EF_FluntAPI.exe.config
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_FluntAPI\bin\Debug\EF_FluntAPI.exe
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_FluntAPI\bin\Debug\EF_FluntAPI.pdb
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_FluntAPI\bin\Debug\EntityFramework.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_FluntAPI\bin\Debug\EntityFramework.SqlServer.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_FluntAPI\bin\Debug\EntityFramework.xml
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_FluntAPI\bin\Debug\EntityFramework.SqlServer.xml
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_FluntAPI\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_FluntAPI\obj\Debug\EF_FluntAPI.csprojAssemblyReference.cache
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_FluntAPI\obj\Debug\EF_FluntAPI.csproj.CoreCompileInputs.cache
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_FluntAPI\obj\Debug\EF_FluntAPI.csproj.CopyComplete
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_FluntAPI\obj\Debug\EF_FluntAPI.exe
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_FluntAPI\obj\Debug\EF_FluntAPI.pdb

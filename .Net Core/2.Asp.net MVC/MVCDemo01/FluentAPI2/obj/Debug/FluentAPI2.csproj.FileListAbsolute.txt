@@ -1,0 +1,13 @@
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\FluentAPI2\bin\Debug\FluentAPI2.exe.config
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\FluentAPI2\bin\Debug\FluentAPI2.exe
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\FluentAPI2\bin\Debug\FluentAPI2.pdb
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\FluentAPI2\bin\Debug\EntityFramework.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\FluentAPI2\bin\Debug\EntityFramework.SqlServer.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\FluentAPI2\bin\Debug\EntityFramework.xml
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\FluentAPI2\bin\Debug\EntityFramework.SqlServer.xml
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\FluentAPI2\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\FluentAPI2\obj\Debug\FluentAPI2.csprojAssemblyReference.cache
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\FluentAPI2\obj\Debug\FluentAPI2.csproj.CoreCompileInputs.cache
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\FluentAPI2\obj\Debug\FluentAPI2.csproj.CopyComplete
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\FluentAPI2\obj\Debug\FluentAPI2.exe
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\FluentAPI2\obj\Debug\FluentAPI2.pdb

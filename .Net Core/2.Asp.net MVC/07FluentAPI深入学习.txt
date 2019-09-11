@@ -1,0 +1,213 @@
+根据约定大于配置，一般情况用约定配置就可以了
+之前是自定义的数据库表名和实体类名的对应关系	[TABLE("T_Persons")]
+基本的EF配置只要配置实体类和表、字段的对应关系、表间关联关系即可。
+下面讲的配置方法，无论FluentAPI和DataAnnotations都支持
+尽量用约定，配置越少越好，Simple is best
+
+***大牛程序员***必经之路：一定要知道自己在干什么！！！程序在干什么！！！
+
+依赖于数据库的“字段长度、是否为空”等约束是在提交到数据库时才会检查
+EF的相关配置，会在EF层就检查反馈，并不会被提交到数据库
+
+以下代码是怎么显示错误信息：
+
+using (MyDBContext ctx=new MyDBContext())
+            {
+                Person p1 = new Person();
+                p1.Name = "AA";
+                p1.Name = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+                p1.Age = 1;
+                ctx.Persons.Add(p1);
+                try
+                {
+                    ctx.SaveChanges();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    //foreach (DbEntityValidationResult item in ex.EntityValidationErrors)
+                    //{
+                    //    foreach (DbValidationError validationError in item.ValidationErrors)
+                    //    {
+                    //        Console.WriteLine(validationError.PropertyName+":"+validationError.ErrorMessage);
+                    //    }
+                    //}
+                    foreach (var ve in ex.EntityValidationErrors.SelectMany(eve=>eve.ValidationErrors))
+                    {
+                        Console.WriteLine(ve.PropertyName+":"+ve.ErrorMessage);
+                    }
+                    
+                }
+                
+                Console.WriteLine("Add Finished!");
+            }
+1 设置字段最大长度	HasMaxLength()
+2 设置是否允许为空 默认EF规则：主键不允许为空、引用类型/可空类型允许为空、值类型不允许为空
+一般只是配置引用类型，值类型一般都用？控制了
+IsRequired()  /  IsOptional()
+
+3 设置主键
+this.HasKey(p=>p.PId);
+4 设置实体类中的属性在数据库字段中自动忽略掉
+this.Ignore(e=>e.Age2);//在数据库中忽略该属性
+5 设置固定长度
+IsFixedLength()
+6 设置字符串编码格式              
+this.Property(e => e.Name).IsUnicode(false);//非Unicode类型：varchar或char
+//this.Property(e => e.Name).IsUnicode(true);//Unicode类型：nvarchar或nchar 
+
+**************************** 顺便掌握一点小知识：*******************************
+1）nchar和nvarchar的区别
+nchar固定长，不足用空格补足
+nvarchar可变长度
+
+
+2）varchar和nvarchar的区别
+varchar(n)
+长度为 n 个字节的可变长度且非 Unicode 的字符数据。n 必须是一个介于 1 和 8,000 之间的数值。存储大小为输入数据的字节的实际长度，而不是 n 个字节。
+nvarchar(n)
+包含 n 个字符的可变长度 Unicode 字符数据。n 的值必须介于 1 与 4,000 之间。字节的存储大小是所输入字符个数的两倍。
+两字段分别有字段值：我和coffee
+那么varchar字段占2×2+6=10个字节的存储空间，而nvarchar字段占8×2=16个字节的存储空间。
+如字段值只是英文可选择varchar，而字段值存在较多的双字节（中文、韩文等）字符时用nvarchar
+上面是一个总结介绍，通过上面的介绍，可以知道。
+varchar(4) 可以输入4个字线，也可以输入两个汉字
+nvarchar(4) 可以输四个汉字，也可以输4个字母，但最多四个
+
+
+7 设置字段对应关系
+this.Property(e => e.Age).HasColumnName("NianLing");
+
+8 指定字段是自动增长的、有默认值的等等，很少用
+
+	理解Fluent的意义：流行的流式编程风格
+	this.Property(e => e.Name).HasMaxLength(30).IsRequired().IsUnicode(true);
+
+
+
+***真正体现EF魅力的知识点：
+EF中对象的关系映射：
+表之间的关系
+1 一对多（多对一）：例如班级和学生 在多端（学生）有一个指向一端（班级）的外键(classId)
+2 多对多：例如学生和老师  需要一个中间表来关联 {id,StudentId,TeacherId}
+3 一对一 不常用
+无论哪种配置，都可以配置到任何一方的实体类的配置上，写法不一样
+
+
+基本套路：
+
+this.Has***(p=>p.A).With***()
+Has定义的是当前表和A表的关系
+With定义的是AAA表和当前表的关系
+***有三种选项：
+Optional （0,1）
+Required  1
+Many	  >1
+
+
+在两个表有关联关系时，可以使用如下方式建立关联：
+    public class Student
+    {
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public long ClassId { get; set; }//将学生和班级建立关联关系
+        public virtual Class Class { get; set; } //注意这种关联使用的属性，设置为virtual
+    }
+
+使用时，无需给ClassId赋值，会自动关联赋值
+            using (MyDBContext ctx = new MyDBContext())
+            {
+                ctx.Database.Log = (sql) => { Console.WriteLine(sql); };
+                Student s = ctx.Students.First();
+                Console.WriteLine(s.Name);
+                Class c = s.Class;
+                Console.WriteLine(c.Name);
+
+            }
+
+
+
+当然，也可以设置数据库中ClassId字段可空，实体类中对应属性类型改为long?
+
+
+另外，可以建立双向关联，但不推荐使用，当两个表关系不止一个的时候会很复杂
+当然，有集合属性以后对保存集合中的一个新对象还是相对简单化
+ctx.Students.Add(s1);
+等价于
+c1.Students.Add(s1);
+
+
+如果多层循环查询时可能会抛异常报错，解决方法后面给出
+
+
+一对多深入：
+FluentAPI配置方式：
+可以在一端做配置，也可以在多端做配置，建议在多端进行配置，和创建Virtual属性一样，因为外键在这里
+
+
+注意事项：
+如果正向配置：在多端实体类中写明Virtual属性，在多端配置中指明关系后，可以使用正向调用
+        public virtual Class Class { get; set; } //注意这种关联使用的属性，设置为virtual
+		//foreach (Student student in ctx.Students.Where(s=>s.ClassId==c1.Id))
+                //{
+                //    Console.WriteLine(student.Name);
+                //}
+反之：
+如果要使用反向调用，需要在一端配置并写明关系，才可以使用反向调用，否则会报错
+        public virtual ICollection<Student> Students { get; set; } = new List<Student>();
+                //foreach (var item in c1.Students)
+                //{
+                //    Console.WriteLine(item.Name);
+                //}
+
+总结：
+一对多配置使用默认配置基本就可以，如果需要配置
+建议只配置多的这一端，只配置这一端的关系映射，调用的时候也注意调用方向就好
+如果个人喜欢双向映射也是可以的，但关联多了就会很麻烦
+一个表有另一个表的两个外键字段怎么配置，见Demo
+
+
+
+EF CodeFirst创建
+1 新建项目
+2 包管理安装EF
+3 APP.config中配置connstring
+4 创建DBContext（注意第一次启用DBMigration，以后禁用，手工修改）（Database.SetInitializer<MyDBContext>(null);//自己手动创建数据库）
+5 创建Model实体类
+6 创建实体类配置类并配置它们之间的关系等
+7 主程序开发
+
+
+总结多对多：
+在双方实体对象模型中都创建virtual ICollection<> = new List<>(); 虚集合属性
+在某一方进行配置
+            //配置实体间多对多关系
+            this.HasMany(t => t.Students).WithMany(s => s.Teachers).Map(m => m.ToTable("T_TeacherStudentRelations").MapLeftKey("TeacherId").MapRightKey("StudentId"));
+
+
+
+对于WithMany中的参数总结：
+简单记忆技巧：建议指定参数就好***
+如果配置了反向集合属性，则WithMany()必须带参数，如果没配置，就不用也不可能有参数
+一对多，不建议配置一端的集合属性，因此不用给WithMany()参数，如果配置了就必须给参数。
+
+在一对多关系中，如果只配置了多端关系并且没有给WithMany指定参数的话，在进行反向关系操作的时候就会报错，要么在一端也配置一次，最好的方法就是还是只配置多端，只不过给WithMany()指定参数
+
+
+多对多时，必须给WithMany()指定参数
+
+
+多对多关系的移除和添加
+ADD和Remove
+
+（*了解）如果一个多对多关系表要增加其他字段，则需要将一个多对多关系拆分成两个一对多的关系，关系表也映射为一个实体类
+
+
+数据库创建策略：
+
+初始创建时启用DBMigration自动根据实体对象模型创建数据库，修改和调整数据库结构
+可以在主程序中使用DataBase.set......（Drop。。。IFCreate）来每次启动程序都自动根据最新DBContext来重新创建数据库结构
+
+后期程序和数据库结构再有调整，就手动各自调整了，不能再重新每次删了重新创建数据库了
+这时候在DBContext的构造函数中增加代码即可：
+Database.SetInitializer<MyDBContext>(null);//禁用数据库自动生成

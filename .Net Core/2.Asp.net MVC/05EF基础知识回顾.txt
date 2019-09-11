@@ -1,0 +1,264 @@
+集合扩展方法
+ANY
+Distinct
+WHERE
+SELECT
+Max\Min\Sum\Count\Average
+ORDERBY ORDERBYDESCENDING 
+ThenBy ThenByDescending
+SKIP
+TAKE
+EXCEPT
+UNION
+INTERSECT
+***GroupBy 返回类型<IEnumerable<IGrouping<int,Person>>>
+SelectMany 把集合中每个元素里的某个集合对象共同合并成另一个集合，
+Join 功能类似于数据库中多表关联查询 等值连接
+语法：
+左表.Join(右表,left=>left.masterid,right=>right.id,(l,r)=>new {name1=l.name,name2=r.name})
+如果有重复数据会重复记录多次
+扩展方法中可以跟各种类型的Lambda表达式
+
+
+所有扩展方法使用后都生成一个新的元素，原集合数据不变
+
+
+EF中用到的c#新语法：
+1 简易初始化 public int age {get;set;}=6;
+2 nameof  可以直接获取变量、属性、方法等的名字的字符串表现形式（.的最后一段部分）
+  作用 避免写错，可以利用编译时检查 （在一些动态编译的地方使用）
+3 ??语法  int j=i??3 如果i为null，则j=3
+	相当于 int j = (i==null?3:(int)i);
+
+int? i = 5;
+int j=i??3;
+//j=5
+
+int? i = null;
+int j=i??3;
+j=3
+
+
+4 ?.语法
+string s8=null;
+string s9=s8?.Trim();
+相当于
+string s9=s8==null?null:s8.Trim();
+
+
+
+EF简介
+
+1、ORM 对象关系映射 Object Relation Mapping
+2、通过ORM可以让程序员像调用对象操作一样调用数据库
+3、主流ORM框架：
+EF（微软官方）、Dapper、PetaPoco、NHibemate
+4、EF底层仍然是对ADO.Net的封装，EF支持SQLServer、MySQL、Oracle等所有主流数据库
+5、使用EF进行数据库开发需要建立两个东西：
+	数据库
+	类模型
+    三种创建方法：
+	a) DataBase First：先创建数据库表，然后自动生成EDM，EDM文件生成模型类(简单，小项目)
+	b) Model First：先创建EDM，EDM自动生成模型类和数据库
+	c) Code First：程序员自己写模型类，然后自动生成数据库，没有EDM.（门槛高、大项目）
+
+无论哪种First，后续使用是没有任何区别的
+新版EF将只支持CodeFirst，所以注意学习重点
+
+尝试通过DataBase First方式创建EF并操作数据库
+1 项目右键添加新建项：选择data中的“ADO.NET实体数据模型”
+2 通过向导连接数据库并选择数据表,实体关系模型名字Demo为“TestEntities”
+3 代码中通过以下方式进行调用
+            using (TestEntities ctx = new TestEntities())
+            {
+                T_Persons p1 = new T_Persons();
+                p1.Name = "abc";
+                p1.Age = 18;
+                p1.Tel = "666";
+                ctx.T_Persons.Add(p1);
+                ctx.SaveChanges();
+            }
+            Console.WriteLine("添加成功");
+            Console.ReadLine();
+
+尝试通过Code First方式创建EF并操作数据库
+1 通过Nuget安装EF包 Install-Package EntityFramework
+(注意选择程序包源及安装到哪一个项目)
+2 在App.config中配置数据库连接字符串
+  <connectionStrings>
+    <add name="connstr" connectionString="Server=.;Database=Test2;Uid=sa;Pwd=0c$;" providerName="System.Data.SqlClient"/>
+  </connectionStrings>
+3 创建数据库，创建数据表
+4 手动创建实体模型
+5 创建数据库上下文类
+    class MyDbContext:DbContext
+    {
+        public MyDbContext() : base("name=connstr")
+        {
+
+        }
+        public DbSet<Person> Persons { get; set; }
+    }
+6 使用上下文处理数据
+PS:DB Miguration 会帮我们自动更新数据库，但太智能不利于对EF的理解，前期先禁用，采用更实际的“手动建数据库和模型类”的方式
+像MVC一样，理解EF的约定大约配置，名字完全相同就不用手动配置
+所以这种框架里能用约定就不用配置
+
+注意事项：
+1	Id会自动认为主键，自动增长赋值，如果要指定某一列为Id，则增加属性[key]
+[key]
+public long Fid{get;set;}
+
+2	如果有列的列名在数据库和类属性不同名的，则需要标注
+[Column("Name1")]
+public string Name{get;set;}
+
+3	必填字段[Required]
+	最大长度[MaxLength(50)]
+	可空类型int?
+	数据库有默认值[DatabaseGenerated]
+
+4 建议使用using DbContext方式，及时资源回收
+5 异常的处理，将异常信息层层深入，研究InnerException就能发现错误具体信息。
+
+
+EF模型的两种配置方式：
+1 DataAnnotations 比较方便，耦合度高，不符合大项目开发的要求
+例如：[Table("T_Persons")]、[Column("name")]
+一般的类最好是POCO（Plain Old C# Object）最原始的类，没有继承什么特殊的父类、没有标注特性
+没有定义特殊方法
+2 FluentAPI 推荐使用
+
+FluentAPI基本使用
+详细见Demo EF_FluntAPI
+注意DBContext类的使用
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EF_FluntAPI
+{
+    class MyDBContext:DbContext
+    {
+        public MyDBContext() : base("name=connstr")
+        {
+
+        }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
+        }
+    }
+}
+
+***modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
+注解：
+从正在执行的程序集中加载所有EntityTypeConfiguration的类到配置中
+如果是从其他程序集中引用
+//modelBuilder.Configurations.AddFromAssembly(Assembly.LoadFrom("ModelConfig"));
+也可以在这个override方法中加载具体的配置类
+            //modelBuilder.Entity<Person>().ToTable("T_Persons");
+            //modelBuilder.Configurations.Add(new PersonConfig());
+但一般都推荐原写法，终极模式，一次写好不用再每次改动
+
+还有实体配置的类的实现
+using System;
+using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EF_FluntAPI
+{
+    class PersonConfig:EntityTypeConfiguration<Person>
+    {
+        public PersonConfig()
+        {
+            this.ToTable("T_Persons");
+        }
+    }
+}
+
+
+
+EF的增删改查：
+增加：
+***savechange后会自动给对象中自动增长的主键赋值***
+因为DbSet最终实现了IEnumerable 所以集合的扩展方法都可以使用
+
+删除：
+先查询后删除
+
+基本的集合扩展方法在这里都可以用
+
+查询不用savechange();其他则需要
+
+Skip方法注意：必须先调OrderBy，这是好的，确定好排序规则是分页查询的前提
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

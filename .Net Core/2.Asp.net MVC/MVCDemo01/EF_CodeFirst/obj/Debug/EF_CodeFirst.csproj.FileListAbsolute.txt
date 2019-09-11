@@ -1,0 +1,13 @@
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_CodeFirst\bin\Debug\EF_CodeFirst.exe.config
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_CodeFirst\bin\Debug\EF_CodeFirst.exe
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_CodeFirst\bin\Debug\EF_CodeFirst.pdb
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_CodeFirst\bin\Debug\EntityFramework.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_CodeFirst\bin\Debug\EntityFramework.SqlServer.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_CodeFirst\bin\Debug\EntityFramework.xml
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_CodeFirst\bin\Debug\EntityFramework.SqlServer.xml
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_CodeFirst\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_CodeFirst\obj\Debug\EF_CodeFirst.csprojAssemblyReference.cache
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_CodeFirst\obj\Debug\EF_CodeFirst.csproj.CoreCompileInputs.cache
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_CodeFirst\obj\Debug\EF_CodeFirst.csproj.CopyComplete
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_CodeFirst\obj\Debug\EF_CodeFirst.exe
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_CodeFirst\obj\Debug\EF_CodeFirst.pdb

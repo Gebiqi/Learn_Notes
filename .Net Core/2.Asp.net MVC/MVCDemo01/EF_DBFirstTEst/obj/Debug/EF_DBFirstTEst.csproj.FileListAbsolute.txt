@@ -1,0 +1,13 @@
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_DBFirstTEst\bin\Debug\EF_DBFirstTEst.exe.config
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_DBFirstTEst\bin\Debug\EF_DBFirstTEst.exe
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_DBFirstTEst\bin\Debug\EF_DBFirstTEst.pdb
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_DBFirstTEst\bin\Debug\EntityFramework.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_DBFirstTEst\bin\Debug\EntityFramework.SqlServer.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_DBFirstTEst\bin\Debug\EntityFramework.xml
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_DBFirstTEst\bin\Debug\EntityFramework.SqlServer.xml
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_DBFirstTEst\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_DBFirstTEst\obj\Debug\EF_DBFirstTEst.csprojAssemblyReference.cache
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_DBFirstTEst\obj\Debug\EF_DBFirstTEst.csproj.CoreCompileInputs.cache
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_DBFirstTEst\obj\Debug\EF_DBFirstTEst.csproj.CopyComplete
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_DBFirstTEst\obj\Debug\EF_DBFirstTEst.exe
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\MVCDemo01\EF_DBFirstTEst\obj\Debug\EF_DBFirstTEst.pdb
