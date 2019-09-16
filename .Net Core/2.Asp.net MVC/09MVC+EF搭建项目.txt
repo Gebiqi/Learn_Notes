@@ -1,0 +1,53 @@
+1 尝试搭建EF+MVC框架Demo （这个UI层是直接访问EF底层数据的，在实际公司的正规项目中不推荐）
+2 不建议UI层直接调用EF实体数据对象
+3 对于多个数据要传给View，使用推荐的做法：创建一个Model新类，包含所有这个方法要传递的数据类型集合，方法内创建Model对象并赋值，View中逐个显示
+4 合适的架构不是一成不变的，架构不是设计出来的，而是演化出来的
+  没有最好的架构，只有最合适的架构！
+
+较为规范的EF+MVC框架架构
+
+EO、DTO、ViewModel
+
+EO：Entity Object 实体对象
+DTO：Data Transfer Object 数据传输对象,用于在各个层之间传递数据的普通类,
+     一般应该是扁平类，DAL和DLL之间、DLL与UI之间是否共用一个DTO，需要看项目复杂程度
+ViewModel: 视图模型
+
+EO：相当于DataTable
+DTO：相当于三层间的Model，在各个层之间传输数据使用的
+
+合适的架构：能满足项目未来一段时间的需要，不要考虑的太远，尽量简单易懂、新手易上手
+
+
+推荐的中小型项目使用的项目架构案例JiaGou，自己没事动手多做几遍
+
+备注：
+1 AutoMapper 自动完成EF数据模型到DTO对象的转换
+2 DTO类可以直接加入View的子Web.config里的namespace配置中，免的每个页面再单独引用了
+3 主UI项目要安装EF框架,而且运行项目前必须把EF中配置文件的configSections和entityFramework两部分配置copy到主项目配置中（configSections部分要尽量在前），以免报错：
+System.InvalidOperationException:“No Entity Framework provider found for the ADO.NET provider with invariant name 'System.Data.SqlClient'. Make sure the provider is registered in the 'entityFramework' section of the application config file. See http://go.microsoft.com/fwlink/?LinkId=260882 for more information.”
+
+***UI项目虽然不直接访问EF，但要安装EF安装包，配置也要配置在web.config中
+后期再测试一下，如果EF安装包装好，相应的配置会不会自动配置好，一般应该可以
+
+4 下拉列表生成助手的使用方法：	
+MinZuService objMinZuService = new MinZuService();
+var minzus = objMinZuService.GetAll();
+SelectList list = new SelectList(minzus,nameof(MinZuDTO.Id),nameof(MinZuDTO.Name));
+return View(list);
+View中调用Htmlhelper
+@Html.DropDownList("Id",@Model)
+	
+5 删除前的确认写法：
+<a href="/student/delete?id=@stu.Id" onclick="return confirm('真的要删除@(stu.Name)吗？')">删除</a>
+
+
+
+
+
+
+
+
+
+
+

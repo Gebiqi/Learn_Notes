@@ -31,11 +31,14 @@ namespace FluentAPI2//多对多
             t2.Students.Add(s3);
             using (MyDBContext ctx = new MyDBContext())
             {
+                //延迟加载
+                //ctx.Configuration.LazyLoadingEnabled = true;
+                //ctx.Configuration.ProxyCreationEnabled = true;
                 ctx.Teachers.Add(t1);
                 ctx.Teachers.Add(t2);
                 ctx.SaveChanges();
                 Console.WriteLine("OK");
-            }
+                }
             Console.ReadLine();
         }
     }

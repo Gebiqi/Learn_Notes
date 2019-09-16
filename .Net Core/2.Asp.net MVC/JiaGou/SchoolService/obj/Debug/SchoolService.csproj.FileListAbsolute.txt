@@ -1,0 +1,14 @@
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolService\bin\Debug\SchoolService.dll.config
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolService\bin\Debug\SchoolService.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolService\bin\Debug\SchoolService.pdb
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolService\bin\Debug\EntityFramework.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolService\bin\Debug\EntityFramework.SqlServer.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolService\bin\Debug\SchoolDTO.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolService\bin\Debug\SchoolDTO.pdb
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolService\bin\Debug\EntityFramework.xml
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolService\bin\Debug\EntityFramework.SqlServer.xml
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolService\obj\Debug\SchoolService.csprojAssemblyReference.cache
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolService\obj\Debug\SchoolService.csproj.CoreCompileInputs.cache
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolService\obj\Debug\SchoolService.csproj.CopyComplete
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolService\obj\Debug\SchoolService.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolService\obj\Debug\SchoolService.pdb

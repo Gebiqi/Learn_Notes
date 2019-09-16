@@ -1,0 +1,20 @@
+﻿@model SelectList
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>新增学员</title>
+</head>
+<body>
+    <div> 
+        <form action="/Student/AddNew" method="post">
+            姓名：<input type="text" name="name" value="" /><br />
+            年龄：<input type="text" name="age" value="" /><br />
+            民族:@Html.DropDownList("Id",@Model)<br />
+            <input type="submit" value="提交" />
+        </form>
+    </div>
+</body>
+</html>

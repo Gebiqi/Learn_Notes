@@ -1,0 +1,6 @@
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolDTO\bin\Debug\SchoolDTO.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolDTO\bin\Debug\SchoolDTO.pdb
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolDTO\obj\Debug\SchoolDTO.csprojAssemblyReference.cache
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolDTO\obj\Debug\SchoolDTO.csproj.CoreCompileInputs.cache
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolDTO\obj\Debug\SchoolDTO.dll
+E:\study\Learn_Notes\.Net Core\2.Asp.net MVC\JiaGou\SchoolDTO\obj\Debug\SchoolDTO.pdb

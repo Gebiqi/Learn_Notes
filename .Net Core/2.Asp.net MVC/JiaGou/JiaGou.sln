@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolService", "SchoolService\SchoolService.csproj", "{A2B7F0E3-CE90-4EF2-9C6A-237719B82714}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolDTO", "SchoolDTO\SchoolDTO.csproj", "{40A61F4A-1A24-4067-B9F7-D2FEF0CC86BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolWeb", "SchoolWeb\SchoolWeb.csproj", "{BA1525C3-086D-41BC-B9BC-EF74166CDB8B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2B7F0E3-CE90-4EF2-9C6A-237719B82714}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2B7F0E3-CE90-4EF2-9C6A-237719B82714}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2B7F0E3-CE90-4EF2-9C6A-237719B82714}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2B7F0E3-CE90-4EF2-9C6A-237719B82714}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40A61F4A-1A24-4067-B9F7-D2FEF0CC86BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40A61F4A-1A24-4067-B9F7-D2FEF0CC86BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40A61F4A-1A24-4067-B9F7-D2FEF0CC86BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40A61F4A-1A24-4067-B9F7-D2FEF0CC86BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA1525C3-086D-41BC-B9BC-EF74166CDB8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA1525C3-086D-41BC-B9BC-EF74166CDB8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA1525C3-086D-41BC-B9BC-EF74166CDB8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA1525C3-086D-41BC-B9BC-EF74166CDB8B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F281E132-066D-4343-8B29-BC514E466C9C}
+	EndGlobalSection
+EndGlobal

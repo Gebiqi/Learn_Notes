@@ -1,0 +1,110 @@
+关联属性（Nav导航属性）的延迟加载介绍（LazyLoad）：
+标记为Virtual为关联属性
+只有在调用使用的时候才会查询数据进行数据加载
+默认以下两个属性为True，只要不手动去修改就可以启用延迟加载策略
+                //延迟加载
+                //ctx.Configuration.LazyLoadingEnabled = true;
+                //ctx.Configuration.ProxyCreationEnabled = true;
+
+设置Virtual之后，s指向的对象并不是Student类的对象，而是Student类的子类的对象
+去掉Virtual之后，s指向的对象就是Student类的对象
+相当于EF自动根据virtual关键字对Student类创建一个子类
+class Student_fdljfalkdsjflasdjflasjlf:Student
+{
+private Class _clz;
+public override Class Class
+{
+get
+{
+if (_clz==null)
+{
+	//执行select查询Class的信息
+	//_clz=executequery();
+}
+}
+set...
+}
+}
+
+如果不给关键字virtual，则不生成Student子类，没有override方法重载也就会抛出异常报空指针错误
+
+
+注意几点：
+1、必须将实体模型类写成public，否则动态生成的子类和当前类不在同一程序集会无法继承
+2、导航属性必须声明为Virtual类型
+3、是否使用延迟加载，需根据情况使用，使用概率很大，就不用；使用概率叫小，就用
+   用延迟加载优点：数据加载小效率高，但需要多次查询数据
+4 启用延迟加载时，拿到的对象是动态生成类的对象，是不可序列化的
+因此不能直接放在进程外Session、Redis等中。如果需要，则新建一个扁平的类，不要有对象类型的关联属性，用该类创建对象赋值序列化即可。
+5 不延迟加载(即一次性加载)的三种Include方法——
+	EF会使用Join语句进行表的关联查询
+        a) ctx.Students.include("属性名Class").First();
+	b) ctx.Students.Include(nameof(Student.Class)).First();
+	c) using System.Data.Entity;
+		ctx.Students.Include(e=>e.Class).First();
+6 一次性加载多个关联属性，就写多个include
+  如果Class对象还有一个School关联属性，也想把School对象的属性也加载，就要
+var s = ctx.Students.Include("Class").Include("Class.School").First();
+或者更好的写法
+var s = ctx.Students.Include(nameof(Student.Class)).Include(nameof(Student.Class)+"."+nameof(Class.School)).First();
+这种是没有Lambda表达式写法的
+
+  EF延迟加载的两个坑：
+7 延迟加载的时机，如果DBContext被销毁了，数据库连接就会断开，也就不能继续延迟加载了
+
+8 如果涉及到多个查询同时发生时，EF会报错DataReader正在使用
+	解决方法：a) 在连接字符串上增加“MultipleActiveResultSets=true”（允许多个DataReader同时执行）只适合SQL2005之后版本，其他MYSQL等是不支持的，所以并不推荐
+		  b) 对将要循环的集合先做.ToList()处理，让EF即可执行出结果，再开始循环
+			foreach(var s in ctx.Students.ToList())
+		  c) 推荐用法：include()预加载
+			foreach(var s in ctx.Students.include(s=>s.Class))
+			{
+				console.write(s.Class.Name);
+			}
+
+
+
+编写模型公共父类 Abstract BaseEntity
+将公共属性都放在这里
+对该BaseEntity类编写继承自其的公共泛型对象方法，可以对继承自公共模型类的对象模型实体提供方便的公共操作方法
+详见Demo
+
+标准App.config中数据库链接字符串写法
+  <connectionStrings>
+    <add name="connstr" connectionString="Server=.;DataBase=Test5;UId=sa;Pwd=0c$;" providerName="System.Data.SqlClient"/>
+  </connectionStrings>
+
+
+cts.Set<Person>().  ===ctx.Persons.
+
+
+IQueryable比IEnumerable的好处，可以二次过滤，不用在内存中全加载过滤
+
+对于IQueryable也可以进行Include操作，但需要using System.Data.Entity
+
+PS：有两个版本的Include、AsNoTracking
+1 DbQuery中的：DbQuery <TResult>AsNoTracking()\DbQuery<TResult>Include(string path)
+2 QueryableExtensions中的扩展方法：....
+
+DbSet继承自DbQuery,Where()\Order()\Skip()等这些方法返回的是IQueryable接口类型，因此，如果在Iqueryable接口类型的对象上调用include、AsNoTracking就要using System.Data.Entity
+
+
+其他优秀的ORM框架：NHibemate、Dapper、PetaPoco、IBatis.Net
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
