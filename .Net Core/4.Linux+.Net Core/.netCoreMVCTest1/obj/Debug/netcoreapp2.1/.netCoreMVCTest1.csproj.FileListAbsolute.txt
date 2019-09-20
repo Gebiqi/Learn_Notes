@@ -1,0 +1,6 @@
+E:\study\Learn_Notes\.Net Core\4.Linux+.Net Core\.netCoreMVCTest1\obj\Debug\netcoreapp2.1\.netCoreMVCTest1.csprojAssemblyReference.cache
+E:\study\Learn_Notes\.Net Core\4.Linux+.Net Core\.netCoreMVCTest1\obj\Debug\netcoreapp2.1\.netCoreMVCTest1.csproj.CoreCompileInputs.cache
+E:\study\Learn_Notes\.Net Core\4.Linux+.Net Core\.netCoreMVCTest1\obj\Debug\netcoreapp2.1\.netCoreMVCTest1.RazorAssemblyInfo.cache
+E:\study\Learn_Notes\.Net Core\4.Linux+.Net Core\.netCoreMVCTest1\obj\Debug\netcoreapp2.1\.netCoreMVCTest1.RazorAssemblyInfo.cs
+E:\study\Learn_Notes\.Net Core\4.Linux+.Net Core\.netCoreMVCTest1\obj\Debug\netcoreapp2.1\.netCoreMVCTest1.AssemblyInfoInputs.cache
+E:\study\Learn_Notes\.Net Core\4.Linux+.Net Core\.netCoreMVCTest1\obj\Debug\netcoreapp2.1\.netCoreMVCTest1.AssemblyInfo.cs

@@ -1,0 +1,165 @@
+.net framework windows下
+.net Core 可移植跨平台
+xamarin 移动端开发app
+utity3d 移动端开发游戏
+
+Linux下软件的安装
+
+很多软件需要自己下载源代码，自己编译，因为很多发行版都有自己的安装包格式，因此很多发行版中都
+提供了类似于应用市场、Nuget的东西。Ubuntu推荐使用apt进行下载、安装。
+sudo apt/apt-get install 程序名
+sudo apt/apt-get remove 程序名
+（sudo是使用管理员权限执行命令）
+
+ 
+查看网络配置ifconfig
+
+SSH服务：运维人员远程连接到机房上的服务器，使用命令行操作服务器。
+相比于Telnet协议的明文传输数据，SSH通讯过程数据是加密的。
+
+Linux安装使用OpenSSH
+Ubuntu默认值安装了客户端openssh-client
+安装服务器：sudo apt install openssh-server
+查看服务器是否开启：netstat -tlp(显示已启动的服务)
+启动 sudo/etc/init.d/ssh start
+重新启动 sudo/etc/init.d/ssh restart
+ssh服务默认端口22 可通过修改配置文件修改端口etc/ssh/sshd_config
+注意linux虚拟机的网卡设置：桥接网卡==>主机网卡
+
+windows下如果通过ssh连接到linux：
+下载运行putty，免安装。
+如果有乱码，可以在translation中更改为utf-8
+在putty中全命令行操作远程服务器资源
+
+安装Mysql服务器
+sudo apt install mysql-server   提示输入用户名密码
+安装Mysql客户端
+sudo apt install mysql-client
+使用客户端登录服务器
+mysql -uroot -p123
+show databases;
+select now();
+quit;退出mysql
+
+基于安全考虑，mysql默认只能本机连接，如果想远程访问，就需要配置。
+最好不要配置成任意电脑都可以连接，风险大，要配置成只允许某些ip访问。
+
+
+配置MySQL远程访问（需要配置为桥接网络）
+
+
+sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf
+由于mysql版本不同可能配置文件存放位置有所区别
+使用cd、dir一级级的查看
+
+编辑修改配置文件：
+注释行bind address 127.0.0.1
+保存退出wq
+执行重启操作
+sudo /etc/init.d/mysql/restart
+查看主机ip
+进入linux的mysql客户端中执行语句：
+grant all privileges on *.* to root@"主机IP" identified by "数据库密码" with grant option;
+再执行
+flush privileges;
+
+
+安装vsftp
+sudo apt install vsftpd
+
+推荐使用的ftp客户端filezilla ftp client
+
+登录使用虚拟机ip、用户名、密码、默认端口 即可连接
+
+默认开始可以用linux用户登录，访问/home/用户名的文件夹下，但是只能下载不能上传。
+需要修改配置文件
+sudo vi /etc/vsftpd.conf
+将"write_enable=YES"前面的#注释取消
+然后重启服务
+sudo /etc/init.d/vsftpd restart 重启
+
+如果上传或下载很多的文件，建议先打包再解压缩
+upzip xxx.zip
+upzip abc\?.zip
+zip -r xxx.zip xxx.txt dir1
+upzip -v large.zip 不解压查看
+upzip -t large.zips 想看看下载完全了吗
+
+
+
+Linux下安装vscode
+因为vscode是图形界面应用程序，需要在桌面环境下安装，不能在终端中安装和使用
+
+安装.net core 以下这段是在网上查的安装步骤，老师并没有明确指示这部分内容
+*************************************************************************
+ubuntu 18 安装 .net core sdk
+2018年07月23日 19:39:00 景影随形 阅读数 2549更多
+分类专栏： linux
+版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+本文链接：https://blog.csdn.net/anjingshen/article/details/81173178
+方法一：官方推荐方式安装
+
+https://www.microsoft.com/net/download/linux-package-manager/ubuntu18-04/sdk-2.1.200
+
+Register Microsoft key and feed
+Before installing .NET, you'll need to register the Microsoft key, register the product repository, and install required dependencies. This only needs to be done once per machine.
+
+Open a command prompt and run the following commands:
+
+wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+Install .NET SDK
+Update the products available for installation, then install the .NET SDK.
+
+In your command prompt, run the following commands:
+
+sudo apt-get install apt-transport-https
+sudo apt-get update
+sudo apt-get install dotnet-sdk-2.1.200
+但是以上命令在执行最后一行和倒数第二行的时候总是报错，因为网络问题没有更新软件包源。安装不了。、。
+
+方法二：去github下载SDK通用linux安装包
+
+https://github.com/dotnet/core/blob/master/release-notes/2.1/2.1.2.md
+
+在Downloads标签中找到属于自己版本的安装包，然后下载。
+*************************************************************************
+
+
+mkdir xxx创建项目目录
+进入目录后使用命令dotnet new mvc 创建项目....
+
+
+***通过命令行创建多项目解决方案
+步骤如下：
+1）先创建解决方案目录pianobbs,然后在其中执行命令 dotnet new sln
+2) dotnet new mvc -o pianobbs.web 说明:创建web项目
+3）dotnet new classlib -o pianobbs.common 说明:创建common类库项目
+4) dotnet sln pianobbsTest1.sln add pianobbsTest1.web/pianobbsTest1.web.csproj
+说明：将web项目添加到解决方案中
+5) dotnet sln pianobbsTest1.sln add pianobbsTest1.common/pianobbsTest1.common.csproj
+说明：将common项目添加到解决方案中
+6) dotnet add pianobbsTest1.web/pianobbsTest1.web.csproj reference pianobbsTest1.common/pianobbsTest1.common.csproj
+说明：添加web项目对common项目的引用
+（可通过cat pianobbsTest1.sln和cat pianobbsTest1.web/pianobbsTest1.web.csproj查看项目添加和引用结果）
+7) dotnet restore 通过nuget还原加载整个解决方案的各个项目中要使用的包
+8) cd pianobbsTest1.web 进入到主项目中
+9) dotnet run 运行主项目
+
+
+使用命令行创建解决方案还是比较麻烦的
+后续将使用脚本方式批量处理
+
+练习使用putty远程创建三层项目（Model、Web、DAL、BLL）
+创建的项目sanceng 简称$1
+
+
+
+
+
+
+
+
+
+
+

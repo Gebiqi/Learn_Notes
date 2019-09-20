@@ -1,0 +1,142 @@
+.net Core使用命令创建控制台项目的三大步骤：
+dotnet new
+dotnet restore
+dotnet run
+
+1 创建控制台项目
+1) dotnet new console -o consoleTest1 在当前目录中创建并初始化控制台类型项目consoleTest1
+   使用命令创建项目是目前很流行的风格。
+2) 也可以先手动创建目录mkdir consoleTest1 
+   进入目录，再执行dotnet new console  初始化控制台类型项目
+3) dotnet restore通过nuget还原安装当前目录的项目用到的包，一定要cd到项目根目录下执行。
+   restore执行消息里给出了nuget下载目录的路径
+4）修改项目代码
+5）dotnet run 编译并运行当前目录的项目，一定要在项目根目录下执行。如果编译报错就根据报错信息改代码或者是忘了dotnet restore了
+6）注意.net core下的控制台程序不是生成exe的，要通过"dotnet 入口dll文件名"方式运行
+    dotnet consoleTest1.dll
+
+
+2 创建mvc项目
+1）步骤大致和上面相似
+	dotnet new mvc -o webTest1
+2）测试阶段使用自带web服务器直接可以运行
+3）wwwroot下存放静态文件1.html
+4) 在linux服务器浏览器中打开http://127.0.0.1:5000只能用本机访问，以后通过nginx配置远程访问
+5）ctrl+c停止服务器
+6）修改默认绑定的端口的方法：在Program.cs的Build之前加入UseUrls("http://*:8888");
+   表示监听所有网卡的8888端口，此时也可以使用主机浏览器访问
+
+
+.net core正确的开发姿势：
+目前.net core只支持控制台和asp.net mvc core，不支持winform和webform，现在已经是云计算时代了，不再需要桌面程序了
+
+另外可以创建classlib项目、webapi项目
+老版本.net core 的项目配置文件是project.json后来又改回了project.csproj
+.net Core两种开发方式：
+windows下vs开发，然后部署到linux运行
+linux下vscode开发，然后部署运行，但没有vs强大
+dotnet命令文档https://docs.microsoft.com/en-us/dotnet/articles/core/tools/dotnet
+
+
+
+***windows下依然同样支持命令行创建项目的方式
+安装了vs2017并勾选了.net core后，应该可以使用命令dotnet了
+
+使用windows命令行创建项目过程和linux一样
+
+最后发布项目到Linux下
+dotnet publish 会在项目的bin\Debug\netcoreapp2.1\publish下生成最终执行代码
+
+将代码用zip打包，用ftp发送到linux服务器
+
+在linux服务器端解压缩运行即可
+
+需要注意两个系统中使用的.net core版本一致性
+
+
+编写自动创建项目的脚本
+bat脚本 windows
+ps2 powershell windows
+
+shell脚本 linux
+
+脚本内容如下：
+
+mkdir $1
+cd $1
+dotnet new mvc -o $1.web
+dotnet new classlib -o $1.model
+dotnet new classlib -o $1.dal
+dotnet new classlib -o $1.bll
+dotnet new sln
+dotnet sln $1.sln add $1.web/$1.web.csproj
+dotnet sln $1.sln add $1.model/$1.model.csproj
+dotnet sln $1.sln add $1.dal/$1.dal.csproj
+dotnet sln $1.sln add $1.bll/$1.bll.csproj
+dotnet add $1.web/$1.web.csproj reference $1.model/$1.model.csproj
+dotnet add $1.web/$1.web.csproj reference $1.bll/$1.bll.csproj
+dotnet add $1.bll/$1.bll.csproj reference $1.model/$1.model.csproj
+dotnet add $1.bll/$1.bll.csproj reference $1.dal/$1.dal.csproj
+dotnet add $1.dal/$1.dal.csproj reference $1.model/$1.model.csproj
+dotnet restore
+
+保存脚本为sc.sh
+
+执行脚本bash ./sc.sh myweb
+
+
+用脚本创建项目架构很快、不容易出错，很多样板项目都是其他人写的脚本，直接执行就可以生成
+
+
+给项目添加nuget包的引用
+dotnet add package Newtonsoft.Json
+dotnet restore
+
+
+指定nuget安装源
+dotnet add new nugetconfig创建nuget配置文件
+
+
+后续将统一在windows下vs开发程序后上传到linux上执行运行
+net core在windows的vs中创建使用过程和普通asp.net mvc使用差不多
+除本解决方案内的项目间互相引用之外，其他引用dll的方式只能通过nuget安装方式进行
+
+建议将dll包上传nuget使用
+也可以自己搭建nuget私服使用
+
+
+***
+.net core 和 .net framework对比
+1、.net core缺失的类 DataTable\DataSet 只能使用Datareader
+	不支持AppDomain；Winform；windows特有的类
+	不支持.net Remoting
+	不支持二进制序列化
+	不支持TransactionScope
+	不支持System.Net.Mail	可以用MailKit
+	不支持串口通讯；WPF
+可以看出.net core是为云而生的
+
+2、.net core 如何使用SqlConnection？
+	要nuget安装：System.Data.Common（ADO.net基础库）和System.Data.SqlClient（SqlServer）
+
+3、反射：Type类的许多方法都是定义在扩展方法中的，需要引用System.Reflection
+	例如GetMethods()\GetTypeInfo()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
